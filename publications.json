@@ -9,7 +9,7 @@
     "doi": "https://pubs.acs.org/doi/10.1021/acscatal.5c",
     "tags": ["ch"],
     "badges": [],
-    "citations": null
+    
   },
   {
     "year": 2025,
@@ -21,7 +21,7 @@
     "doi": "https://pubs.acs.org/doi/10.1021/jacs.5c06232",
     "tags": ["ch"],
     "badges": [],
-    "citations": null
+    
   },
   {
     "year": 2025,
@@ -33,7 +33,7 @@
     "doi": "https://pubs.rsc.org/en/content/articlelanding/2025/sc/d5sc06269a",
     "tags": ["photochem"],
     "badges": ["Open Access"],
-    "citations": null
+    
   },
   {
     "year": 2025,
@@ -45,7 +45,7 @@
     "doi": "https://pubs.acs.org/doi/10.1021/acscatal.5c00794",
     "tags": ["review", "ch"],
     "badges": ["Review"],
-    "citations": 9
+    
   },
   {
     "year": 2025,
@@ -57,7 +57,7 @@
     "doi": "#",
     "tags": ["med"],
     "badges": ["Medicinal"],
-    "citations": 2
+    
   },
   {
     "year": 2024,
@@ -69,7 +69,7 @@
     "doi": "#",
     "tags": ["photochem", "ch"],
     "badges": ["Hot article"],
-    "citations": null
+    
   },
   {
     "year": 2024,
@@ -81,7 +81,7 @@
     "doi": "#",
     "tags": ["review", "photochem"],
     "badges": ["Review"],
-    "citations": null
+    
   },
   {
     "year": 2023,
@@ -93,7 +93,7 @@
     "doi": "https://onlinelibrary.wiley.com/doi/10.1002/anie.202302175",
     "tags": ["ch"],
     "badges": [],
-    "citations": 22
+    
   },
   {
     "year": 2023,
@@ -105,7 +105,7 @@
     "doi": "#",
     "tags": ["ch"],
     "badges": [],
-    "citations": null
+    
   },
   {
     "year": 2022,
@@ -117,7 +117,7 @@
     "doi": "https://pubs.rsc.org/en/content/articlelanding/2022/sc/d1sc06562a",
     "tags": ["photochem"],
     "badges": ["Open Access"],
-    "citations": 60
+    
   },
   {
     "year": 2022,
@@ -129,7 +129,7 @@
     "doi": "#",
     "tags": ["photochem"],
     "badges": [],
-    "citations": null
+    
   },
   {
     "year": 2021,
@@ -141,7 +141,7 @@
     "doi": "https://pubs.rsc.org/en/content/articlelanding/2021/cc/d1cc03273c",
     "tags": ["ch"],
     "badges": [],
-    "citations": null
+    
   },
   {
     "year": 2021,
@@ -153,7 +153,7 @@
     "doi": "https://pubs.acs.org/doi/10.1021/acs.orglett.1c00578",
     "tags": ["photochem"],
     "badges": [],
-    "citations": null
+    
   },
   {
     "year": 2021,
@@ -165,7 +165,7 @@
     "doi": "https://pubs.rsc.org/en/content/articlelanding/2021/md/d1md00054c",
     "tags": ["med"],
     "badges": ["Medicinal"],
-    "citations": null
+    
   },
   {
     "year": 2020,
@@ -177,7 +177,7 @@
     "doi": "https://pubs.acs.org/doi/10.1021/acs.jmedchem.9b01768",
     "tags": ["med"],
     "badges": ["Medicinal"],
-    "citations": null
+    
   },
   {
     "year": 2020,
@@ -189,6 +189,6 @@
     "doi": "https://onlinelibrary.wiley.com/doi/10.1002/adsc.202000097",
     "tags": ["review", "photochem"],
     "badges": ["Review"],
-    "citations": null
+    
   }
 ]
