@@ -1,2 +1,2 @@
-# Priebbenow-Group-Publications
-Publication list for Priebbenow Group
+# Priebbenow-Group-Website
+Our group website
