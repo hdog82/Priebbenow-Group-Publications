@@ -70,7 +70,7 @@
       "journal": "Chemical Science",
       "volume": "16, 45, pp. 21475–21482",
       "date": "2025",
-      "doi": "https://pubs.rsc.org/en/content/articlelanding/2025/sc/d5sc06269a",
+      "doi": "https://doi.org/10.1039/D5SC06269A",
       "tags": [
         "photochem"
       ],
@@ -101,7 +101,7 @@
       "journal": "Journal of Medicinal Chemistry",
       "volume": "15, 9, pp. 8065–8090",
       "date": "Apr 2025",
-      "doi": "#",
+      "doi": "https://doi.org/10.1021/acs.jmedchem.4c02541",
       "tags": [
         "medchem"
       ],
@@ -114,7 +114,7 @@
       "journal": "Journal of Organic Chemistry",
       "volume": "",
       "date": "Oct 2024",
-      "doi": "#",
+      "doi": "https://doi.org/10.1039/D4SC05715E",
       "tags": [
         "photochem",
         "catalysis"
