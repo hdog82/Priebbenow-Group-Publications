@@ -49,6 +49,10 @@
   .year-num { font-size: 1.3rem; font-weight: 300; color: var(--navy); font-style: italic; min-width: 48px; }
   .year-count { font-size: 0.72rem; color: var(--gray-400); letter-spacing: 0.06em; text-transform: uppercase; }
   .pub-card { display: flex; gap: 1.25rem; padding: 1.25rem 1.5rem; background: var(--gray-100); border: 1px solid var(--gray-200); border-radius: 6px; margin-bottom: 0.6rem; }
+  .pub-card:hover { background: #000000; border-color: #000000; cursor: pointer; }
+  .pub-card:hover .pub-title, .pub-card:hover .pub-title a, .pub-card:hover .pub-authors, .pub-card:hover .pub-journal, .pub-card:hover .pub-vol, .pub-card:hover .pub-num, .pub-card:hover .pub-journal-sep { color: #ffffff; }
+  .pub-card:hover .pub-title a { border-bottom-color: rgba(255,255,255,0.3); }
+  .pub-card:hover .badge { opacity: 0.85; }
   .pub-card:last-child { margin-bottom: 0; }
   .pub-num { font-size: 0.78rem; font-weight: 500; color: var(--gray-400); min-width: 28px; padding-top: 2px; font-style: italic; text-align: right; }
   .pub-body { flex: 1; }
@@ -72,8 +76,8 @@
   .footnote { font-size: 0.75rem; color: var(--gray-400); font-weight: 300; font-style: italic; margin-top: 1rem; }
   .footnote a { color: var(--teal-mid); text-decoration: none; }
   footer { background: var(--gray-100); border-top: 1px solid var(--gray-200); padding: 1.5rem 2rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; }
-  footer p { font-size: 0.75rem; color: var(--gray-400); font-weight: 300; }
-  footer a { color: var(--teal-mid); text-decoration: none; font-size: 0.75rem; }
+  footer p { font-size: 0.75rem; color: var(--gray-400); font-weight: 300; margin-bottom: 0.2rem; }
+  footer p a { color: var(--teal-mid); text-decoration: none; font-size: 0.75rem; }
   @media (max-width: 600px) { .header-stats { gap: 1.25rem; } .pub-num { display: none; } nav { padding: 0 1rem; } .nav-links { gap: 1rem; } }
 </style>
 </head>
@@ -111,17 +115,14 @@
 
 <main class="main">
   <div id="publications-list"><div class="loading">Loading publications…</div></div>
-
-  <p class="footnote" id="footnote" style="display:none">
-    * Denotes corresponding author. Citation counts sourced from Scopus. For the complete list visit
-    <a href="https://scholar.google.com/citations?user=mblc2c0AAAAJ" target="_blank">Google Scholar</a> or
-    <a href="https://research.monash.edu/en/persons/daniel-priebbenow/publications/" target="_blank">Monash Research</a>.
-    Page last updated May 2026.
-  </p>
+  <p class="footnote" id="footnote"></p>
 </main>
 
 <footer>
-  <p>© 2026 Priebbenow Group — Monash Institute of Pharmaceutical Sciences</p>
+  <div>
+    <p>© 2026 Priebbenow Group — <a href="https://www.monash.edu/mips/themes/medicinal-chemistry" target="_blank">Monash Institute of Pharmaceutical Sciences</a></p>
+    <p>399 Royal Parade, Parkville VIC 3052, Australia</p>
+  </div>
   <a href="https://scholar.google.com/citations?user=mblc2c0AAAAJ" target="_blank">Google Scholar profile ↗</a>
 </footer>
 
@@ -134,7 +135,6 @@
   };
 
   function buildPage(pubs) {
-    document.getElementById('footnote').style.display = '';
     const byYear = {};
     pubs.forEach(p => { if (!byYear[p.year]) byYear[p.year] = []; byYear[p.year].push(p); });
     const years = Object.keys(byYear).sort((a, b) => b - a);
@@ -186,7 +186,16 @@
   }
 
   fetch('publications.json')
-    .then(r => { if (!r.ok) throw new Error('Could not load publications.json'); return r.json(); })
+    .then(r => {
+      const lastModified = r.headers.get('last-modified');
+      if (lastModified) {
+        const date = new Date(lastModified);
+        const formatted = date.toLocaleDateString('en-AU', { month: 'long', year: 'numeric' });
+        document.getElementById('footnote').textContent = 'Page last updated ' + formatted + '.';
+      }
+      if (!r.ok) throw new Error('Could not load publications.json');
+      return r.json();
+    })
     .then(data => {
       buildFilterButtons(data.categories || []);
       buildPage(data.publications || []);
