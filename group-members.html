@@ -66,8 +66,8 @@
   }
   .members-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 1.75rem;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 1.25rem;
   }
 
   /* MEMBER CARD */
@@ -76,7 +76,7 @@
     text-align: center; cursor: default;
   }
   .member-photo {
-    width: 180px; height: 180px; border-radius: 6px;
+    width: 120px; height: 120px; border-radius: 6px;
     background: var(--gray-100); border: 1px solid var(--gray-200);
     display: flex; align-items: center; justify-content: center;
     overflow: hidden; margin-bottom: 0.75rem;
@@ -85,7 +85,7 @@
   }
   .member-photo img { width: 100%; height: 100%; object-fit: cover; }
   .member-card:hover .member-photo { border-color: var(--teal-light); }
-  .member-name { font-size: 1rem; font-weight: 500; color: var(--navy); line-height: 1.3; }
+  .member-name { font-size: 0.85rem; font-weight: 500; color: var(--navy); line-height: 1.3; }
   .member-postnominals { font-size: 0.75rem; color: var(--teal-mid); font-style: italic; margin-top: 2px; }
   .member-bio-text { font-size: 0.72rem; color: var(--gray-600); margin-top: 4px; line-height: 1.4; font-weight: 300; }
 
@@ -132,7 +132,6 @@
   <div class="nav-logo">Priebbenow<span>Group</span></div>
   <ul class="nav-links">
     <li><a href="index.html">Home</a></li>
-    <li><a href="research.html">Research</a></li>
     <li><a href="priebbenow-publications.html">Publications</a></li>
     <li><a href="#" class="active">Group Members</a></li>
     <li><a href="#">Contact</a></li>
@@ -171,11 +170,10 @@
       <div class="labhead-card">
         <div class="labhead-photo">${renderPhoto(lh.photo, true)}</div>
         <div class="labhead-info">
-          <div class="labhead-name">${lh.name}</div>
-          <div class="labhead-postnominals">${lh.postnominals}</div>
+          <div class="labhead-name">Group Leader: ${lh.name}</div>
           <div class="labhead-title">${lh.title} · ${lh.institution}</div>
           <div class="labhead-bio">${lh.bio}</div>
-          ${lh.email ? `<a class="labhead-email" href="mailto:${lh.email}">${lh.email}</a>` : ''}
+          ${lh.email ? `<a class="labhead-email" href="mailto:${lh.email}">Contact: ${lh.email}</a>` : ''}
         </div>
       </div>`;
   }
