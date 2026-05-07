@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Publications — Dr Daniel L. Priebbenow</title>
+<link href="https://fonts.googleapis.com/css2?family=Aptos:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #1e2d4a; --teal-dark: #1a6b5a; --teal-mid: #2a9478;
+    --teal-light: #4abf9f; --teal-pale: #e0f5ef; --magenta: #c0296b;
+    --gray-100: #f7f8f9; --gray-200: #eaecef; --gray-400: #9ca3af;
+    --gray-600: #5a6270; --gray-800: #2d3340; --white: #ffffff;
+    --font: 'Aptos', 'Segoe UI', system-ui, sans-serif;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: var(--font); background: var(--white); color: var(--gray-800); line-height: 1.6; }
+  nav { position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,0.95); backdrop-filter: blur(8px); border-bottom: 1px solid var(--gray-200); padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; height: 60px; }
+  .nav-logo { font-size: 0.9rem; font-weight: 500; color: var(--navy); letter-spacing: 0.03em; text-transform: uppercase; }
+  .nav-logo span { color: var(--teal-mid); }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a { text-decoration: none; font-size: 0.85rem; color: var(--gray-600); transition: color 0.2s; }
+  .nav-links a:hover { color: var(--teal-dark); }
+  .nav-links a.active { color: var(--navy); font-weight: 500; }
+  .page-header { background: linear-gradient(160deg, #f0f8f5 0%, #f8f7ff 70%, #fff0f5 100%); border-bottom: 1px solid var(--gray-200); padding: 3.5rem 2rem 2.5rem; }
+  .page-header-inner { max-width: 860px; margin: 0 auto; display: flex; align-items: flex-end; justify-content: space-between; flex-wrap: wrap; gap: 1.5rem; }
+  .page-eyebrow { font-size: 0.7rem; font-weight: 500; letter-spacing: 0.14em; color: var(--teal-mid); text-transform: uppercase; margin-bottom: 0.5rem; }
+  .page-header h1 { font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 300; color: var(--navy); line-height: 1.25; }
+  .page-header h1 em { font-style: italic; color: var(--teal-dark); font-weight: 400; }
+  .page-header-meta { font-size: 0.82rem; color: var(--gray-600); margin-top: 0.4rem; font-weight: 300; }
+  .page-header-meta a { color: var(--teal-mid); text-decoration: none; border-bottom: 1px solid var(--teal-light); padding-bottom: 1px; }
+  .header-stats { display: flex; gap: 2rem; flex-shrink: 0; }
+  .hstat { text-align: center; }
+  .hstat-num { font-size: 1.6rem; font-weight: 300; color: var(--navy); font-style: italic; line-height: 1; }
+  .hstat-label { font-size: 0.68rem; color: var(--gray-400); letter-spacing: 0.08em; text-transform: uppercase; margin-top: 3px; }
+  .filter-bar { background: var(--white); border-bottom: 1px solid var(--gray-200); padding: 0.75rem 2rem; position: sticky; top: 60px; z-index: 90; }
+  .filter-bar-inner { max-width: 860px; margin: 0 auto; display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; }
+  .filter-label { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.06em; color: var(--gray-400); text-transform: uppercase; margin-right: 0.5rem; }
+  .filter-btn { border: 1px solid var(--gray-200); background: var(--white); color: var(--gray-600); font-family: var(--font); font-size: 0.78rem; padding: 4px 12px; border-radius: 20px; cursor: pointer; transition: all 0.15s; }
+  .filter-btn:hover { border-color: var(--teal-mid); color: var(--teal-dark); }
+  .filter-btn.active { background: #000000; color: #fff; border-color: #000000; }
+  .main { max-width: 860px; margin: 0 auto; padding: 2.5rem 2rem 4rem; }
+  .scholar-banner { background: var(--gray-100); border: 1px solid var(--gray-200); border-radius: 6px; padding: 1.25rem 1.5rem; display: flex; align-items: center; gap: 1rem; margin-bottom: 2.5rem; }
+  .scholar-icon { width: 36px; height: 36px; border-radius: 50%; background: var(--navy); display: flex; align-items: center; justify-content: center; color: #fff; font-size: 0.85rem; font-weight: 600; flex-shrink: 0; }
+  .scholar-text p { font-size: 0.82rem; color: var(--gray-600); font-weight: 300; }
+  .scholar-text a { font-size: 0.85rem; font-weight: 500; color: var(--teal-dark); text-decoration: none; border-bottom: 1px solid var(--teal-light); }
+  .year-group { margin-bottom: 3rem; }
+  .year-heading { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.25rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--gray-200); }
+  .year-num { font-size: 1.3rem; font-weight: 300; color: var(--navy); font-style: italic; min-width: 48px; }
+  .year-count { font-size: 0.72rem; color: var(--gray-400); letter-spacing: 0.06em; text-transform: uppercase; }
+  .pub-card { display: flex; gap: 1.25rem; padding: 1.25rem 1.5rem; background: var(--gray-100); border: 1px solid var(--gray-200); border-radius: 6px; margin-bottom: 0.6rem; }
+  .pub-card:last-child { margin-bottom: 0; }
+  .pub-num { font-size: 0.78rem; font-weight: 500; color: var(--gray-400); min-width: 28px; padding-top: 2px; font-style: italic; text-align: right; }
+  .pub-body { flex: 1; }
+  .pub-title { font-size: 0.92rem; font-weight: 500; color: var(--navy); line-height: 1.45; margin-bottom: 0.3rem; }
+  .pub-title a { text-decoration: none; color: inherit; border-bottom: 1px solid transparent; transition: border-color 0.15s; }
+  .pub-title a:hover { border-color: var(--teal-light); color: var(--teal-dark); }
+  .pub-authors { font-size: 0.8rem; color: var(--gray-600); margin-bottom: 0.3rem; font-weight: 300; font-style: italic; }
+  .pub-meta { display: flex; align-items: center; gap: 0.6rem; flex-wrap: wrap; margin-top: 0.4rem; }
+  .pub-journal { font-size: 0.78rem; color: var(--gray-600); font-style: italic; }
+  .pub-journal-sep { color: var(--gray-400); font-size: 0.7rem; }
+  .pub-vol { font-size: 0.78rem; color: var(--gray-600); }
+  .badge { display: inline-block; padding: 2px 8px; border-radius: 3px; font-size: 0.68rem; font-weight: 500; letter-spacing: 0.04em; text-transform: uppercase; }
+  .badge-oa { background: #e0f5ef; color: #1a6b5a; }
+  .badge-review { background: #f0eeff; color: #4a3aaa; }
+  .badge-med { background: #fdeef4; color: #9a1d52; }
+  .badge-hot { background: #fff3cd; color: #7a5600; }
+  .pub-cite { font-size: 0.75rem; color: var(--gray-400); display: flex; align-items: center; gap: 3px; }
+  .cite-num { color: var(--teal-dark); font-weight: 500; }
+  .loading { text-align: center; padding: 3rem; color: var(--gray-400); font-style: italic; font-size: 0.9rem; }
+  .error { text-align: center; padding: 3rem; color: var(--magenta); font-size: 0.9rem; line-height: 1.8; }
+  .footnote { font-size: 0.75rem; color: var(--gray-400); font-weight: 300; font-style: italic; margin-top: 1rem; }
+  .footnote a { color: var(--teal-mid); text-decoration: none; }
+  footer { background: var(--gray-100); border-top: 1px solid var(--gray-200); padding: 1.5rem 2rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; }
+  footer p { font-size: 0.75rem; color: var(--gray-400); font-weight: 300; }
+  footer a { color: var(--teal-mid); text-decoration: none; font-size: 0.75rem; }
+  @media (max-width: 600px) { .header-stats { gap: 1.25rem; } .pub-num { display: none; } nav { padding: 0 1rem; } .nav-links { gap: 1rem; } }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">Priebbenow<span>Group</span></div>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="#" class="active">Publications</a></li>
+    <li><a href="#">Contact</a></li>
+  </ul>
+</nav>
+
+<header class="page-header">
+  <div class="page-header-inner">
+    <div>
+      <h1>Publications - <em>Priebbenow Group</em></h1>
+      <p class="page-header-meta">
+        · <a href="https://scholar.google.com/citations?user=mblc2c0AAAAJ&hl=en" target="_blank">Google Scholar ↗</a>
+        &nbsp;·&nbsp;
+        <a href="https://orcid.org/0000-0002-7840-0405" target="_blank">ORCID ↗</a>
+      </p>
+    </div>
+  </div>
+</header>
+
+<div class="filter-bar">
+  <div class="filter-bar-inner">
+    <span class="filter-label">Filter</span>
+    <button class="filter-btn active" onclick="filterPubs('all', this)">All</button>
+    <!-- Category buttons are built automatically from publications.json -->
+  </div>
+</div>
+
+<main class="main">
+  <div id="publications-list"><div class="loading">Loading publications…</div></div>
+
+  <p class="footnote" id="footnote" style="display:none">
+    * Denotes corresponding author. Citation counts sourced from Scopus. For the complete list visit
+    <a href="https://scholar.google.com/citations?user=mblc2c0AAAAJ" target="_blank">Google Scholar</a> or
+    <a href="https://research.monash.edu/en/persons/daniel-priebbenow/publications/" target="_blank">Monash Research</a>.
+    Page last updated May 2026.
+  </p>
+</main>
+
+<footer>
+  <p>© 2026 Priebbenow Group — Monash Institute of Pharmaceutical Sciences</p>
+  <a href="https://scholar.google.com/citations?user=mblc2c0AAAAJ" target="_blank">Google Scholar profile ↗</a>
+</footer>
+
+<script>
+  const badgeClass = {
+    'Open Access': 'badge-oa',
+    'Review': 'badge-review',
+    'Medicinal': 'badge-med',
+    'Hot article': 'badge-hot'
+  };
+
+  function buildPage(pubs) {
+    document.getElementById('footnote').style.display = '';
+    const byYear = {};
+    pubs.forEach(p => { if (!byYear[p.year]) byYear[p.year] = []; byYear[p.year].push(p); });
+    const years = Object.keys(byYear).sort((a, b) => b - a);
+    const container = document.getElementById('publications-list');
+    container.innerHTML = '';
+    years.forEach(year => {
+      const group = document.createElement('div');
+      group.className = 'year-group';
+      group.dataset.year = year;
+      const count = byYear[year].length;
+      group.innerHTML = `<div class="year-heading"><span class="year-num">${year}</span><span class="year-count">${count} publication${count !== 1 ? 's' : ''}</span></div>`;
+      byYear[year].forEach(pub => {
+        const card = document.createElement('div');
+        card.className = 'pub-card';
+        card.dataset.tags = pub.tags.join(' ');
+        const titleHtml = (pub.doi && pub.doi !== '#')
+          ? `<a href="${pub.doi}" target="_blank">${pub.title}</a>` : pub.title;
+        const badgesHtml = (pub.badges || []).map(b =>
+          `<span class="badge ${badgeClass[b] || 'badge-review'}">${b}</span>`).join('');
+        const citHtml = pub.citations
+          ? `<span class="pub-cite"><span class="cite-num">${pub.citations}</span> citations</span>` : '';
+        const volHtml = pub.volume
+          ? `<span class="pub-journal-sep">·</span><span class="pub-vol">${pub.volume}</span>` : '';
+        card.innerHTML = `
+          <div class="pub-num">—</div>
+          <div class="pub-body">
+            <div class="pub-title">${titleHtml}</div>
+            <div class="pub-authors">${pub.authors}</div>
+            <div class="pub-meta">
+              <span class="pub-journal">${pub.journal}</span>
+              ${volHtml}${badgesHtml}${citHtml}
+            </div>
+          </div>`;
+        group.appendChild(card);
+      });
+      container.appendChild(group);
+    });
+  }
+
+  function filterPubs(tag, btn) {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.pub-card').forEach(card => {
+      const tags = (card.dataset.tags || '').split(' ');
+      card.style.display = (tag === 'all' || tags.includes(tag)) ? 'flex' : 'none';
+    });
+    document.querySelectorAll('.year-group').forEach(group => {
+      const visible = [...group.querySelectorAll('.pub-card')].some(c => c.style.display !== 'none');
+      group.style.display = visible ? '' : 'none';
+    });
+  }
+
+  fetch('publications.json')
+    .then(r => { if (!r.ok) throw new Error('Could not load publications.json'); return r.json(); })
+    .then(data => {
+      buildFilterButtons(data.categories || []);
+      buildPage(data.publications || []);
+    })
+    .catch(err => {
+      document.getElementById('publications-list').innerHTML =
+        `<div class="error">
+          Could not load publications.<br>
+          Make sure <strong>publications.json</strong> is in the same folder as this HTML file on GitHub.<br>
+          <small style="color:#9ca3af">${err.message}</small>
+        </div>`;
+    });
+
+  function buildFilterButtons(categories) {
+    const bar = document.querySelector('.filter-bar-inner');
+    categories.forEach(cat => {
+      const btn = document.createElement('button');
+      btn.className = 'filter-btn';
+      btn.textContent = cat.label;
+      btn.onclick = function() { filterPubs(cat.tag, this); };
+      bar.appendChild(btn);
+    });
+  }
+</script>
+</body>
+</html>
