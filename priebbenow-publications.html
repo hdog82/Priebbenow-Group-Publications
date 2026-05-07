@@ -154,8 +154,6 @@
           ? `<a href="${pub.doi}" target="_blank">${pub.title}</a>` : pub.title;
         const badgesHtml = (pub.badges || []).map(b =>
           `<span class="badge ${badgeClass[b] || 'badge-review'}">${b}</span>`).join('');
-        const citHtml = pub.citations
-          ? `<span class="pub-cite"><span class="cite-num">${pub.citations}</span> citations</span>` : '';
         const volHtml = pub.volume
           ? `<span class="pub-journal-sep">·</span><span class="pub-vol">${pub.volume}</span>` : '';
         card.innerHTML = `
@@ -165,7 +163,7 @@
             <div class="pub-authors">${pub.authors}</div>
             <div class="pub-meta">
               <span class="pub-journal">${pub.journal}</span>
-              ${volHtml}${badgesHtml}${citHtml}
+              ${volHtml}${badgesHtml}
             </div>
           </div>`;
         group.appendChild(card);
