@@ -1,4 +1,12 @@
-[
+{
+  "categories": [
+    { "tag": "photochem",  "label": "Photochemistry" },
+    { "tag": "catalysis",         "label": "Transition-Metal Catalysis" },
+    { "tag": "medchem",        "label": "Medicinal Chemistry" },
+    { "tag": "review",     "label": "Reviews" }
+    { "tag": "pre-print",     "label": "Pre-prints" }
+  ],
+
   {
     "year": 2026,
     "title": "Ligand-Enabled CpERhIII-Catalyzed C(sp3)–H Alkynylation of Carboxamides",
@@ -7,7 +15,7 @@
     "volume": "16, 5, pp. 4815–4826",
     "date": "6 Mar 2026",
     "doi": "https://pubs.acs.org/doi/10.1021/acscatal.5c",
-    "tags": ["ch"],
+    "tags": ["catalysis"],
     "badges": [],
     
   },
@@ -19,7 +27,7 @@
     "volume": "147, 28, pp. 24734–24746",
     "date": "Jul 2025",
     "doi": "https://pubs.acs.org/doi/10.1021/jacs.5c06232",
-    "tags": ["ch"],
+    "tags": ["catalysis"],
     "badges": [],
     
   },
@@ -43,7 +51,7 @@
     "volume": "15, 9, pp. 6881–6894",
     "date": "May 2025",
     "doi": "https://pubs.acs.org/doi/10.1021/acscatal.5c00794",
-    "tags": ["review", "ch"],
+    "tags": ["review", "catalysis"],
     "badges": ["Review"],
     
   },
@@ -55,7 +63,7 @@
     "volume": "15, 9, pp. 8065–8090",
     "date": "Apr 2025",
     "doi": "#",
-    "tags": ["med"],
+    "tags": ["medchem"],
     "badges": [],
     
   },
@@ -67,7 +75,7 @@
     "volume": "",
     "date": "Oct 2024",
     "doi": "#",
-    "tags": ["photochem", "ch"],
+    "tags": ["photochem", "catalysis"],
     "badges": [],
     
   },
@@ -91,22 +99,11 @@
     "volume": "62, 23, e202302175",
     "date": "Jun 2023",
     "doi": "https://onlinelibrary.wiley.com/doi/10.1002/anie.202302175",
-    "tags": ["ch"],
+    "tags": ["catalysis"],
     "badges": [],
     
   },
-  {
-    "year": 2023,
-    "title": "Acylsilane Directed Rh-Catalyzed Arene C–H Alkylation with Maleimides and Visible-Light-Induced Siloxycarbene-Amide Cyclization",
-    "authors": "Priebbenow, D. L. et al.",
-    "journal": "Organic Chemistry Frontiers",
-    "volume": "10",
-    "date": "2023",
-    "doi": "#",
-    "tags": ["ch"],
-    "badges": [],
-    
-  },
+
   {
     "year": 2022,
     "title": "Intramolecular Photochemical [2+1]-Cycloadditions of Nucleophilic Siloxy Carbenes",
@@ -119,18 +116,7 @@
     "badges": ["Open Access"],
     
   },
-  {
-    "year": 2022,
-    "title": "Functionalized Cyclopentenes via the Formal [4+1] Cycloaddition of Photogenerated Siloxycarbenes from Acyl Silanes",
-    "authors": "Priebbenow, D. L. et al.",
-    "journal": "Journal of Organic Chemistry",
-    "volume": "",
-    "date": "Jun 2022",
-    "doi": "#",
-    "tags": ["photochem"],
-    "badges": [],
-    
-  },
+  
   {
     "year": 2021,
     "title": "Acyl Silane Directed Cp*Rh(III)-Catalysed Alkylation/Annulation Reactions",
@@ -138,8 +124,8 @@
     "journal": "Chemical Communications",
     "volume": "57, pp. 7938–7941",
     "date": "2021",
-    "doi": "https://pubs.rsc.org/en/content/articlelanding/2021/cc/d1cc03273c",
-    "tags": ["ch"],
+    "doi": "https://doi.org/10.1039/D1CC03051E",
+    "tags": ["catalysis"],
     "badges": [],
     
   },
@@ -162,8 +148,8 @@
     "journal": "RSC Medicinal Chemistry",
     "volume": "12, pp. 943–959",
     "date": "2021",
-    "doi": "https://pubs.rsc.org/en/content/articlelanding/2021/md/d1md00054c",
-    "tags": ["med"],
+    "doi": "https://doi.org/10.1039/D1MD00063B",
+    "tags": ["medchem"],
     "badges": [],
     
   },
@@ -175,7 +161,7 @@
     "volume": "63, pp. 4655–4684",
     "date": "2020",
     "doi": "https://pubs.acs.org/doi/10.1021/acs.jmedchem.9b01768",
-    "tags": ["med"],
+    "tags": ["medchem"],
     "badges": [],
     
   },
