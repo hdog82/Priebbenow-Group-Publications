@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Research — Priebbenow Group</title>
+<link href="https://fonts.googleapis.com/css2?family=Aptos:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #1e2d4a;
+    --teal-dark: #1a6b5a;
+    --teal-mid: #2a9478;
+    --teal-light: #4abf9f;
+    --teal-pale: #e0f5ef;
+    --magenta: #c0296b;
+    --gray-100: #f7f8f9;
+    --gray-200: #eaecef;
+    --gray-400: #9ca3af;
+    --gray-600: #5a6270;
+    --gray-800: #2d3340;
+    --white: #ffffff;
+    --font: 'Aptos', 'Segoe UI', system-ui, sans-serif;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: var(--font); background: var(--white); color: var(--gray-800); line-height: 1.6; }
+
+  /* NAV */
+  nav { position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,0.95); backdrop-filter: blur(8px); border-bottom: 1px solid var(--gray-200); padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; height: 60px; }
+  .nav-logo { font-size: 0.9rem; font-weight: 500; color: var(--navy); letter-spacing: 0.03em; text-transform: uppercase; }
+  .nav-logo span { color: var(--teal-mid); }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a { text-decoration: none; font-size: 0.85rem; color: var(--gray-600); transition: color 0.2s; }
+  .nav-links a:hover { color: var(--teal-dark); }
+  .nav-links a.active { color: var(--navy); font-weight: 500; }
+
+  /* PAGE HEADER */
+  .page-header { background: linear-gradient(160deg, #f0f8f5 0%, #f8f7ff 70%, #fff0f5 100%); border-bottom: 1px solid var(--gray-200); padding: 3.5rem 2rem 2.5rem; }
+  .page-header-inner { max-width: 960px; margin: 0 auto; }
+  .page-header h1 { font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 300; color: var(--navy); line-height: 1.25; }
+
+  /* INTRO SECTION */
+  .intro-section { max-width: 960px; margin: 0 auto; padding: 3.5rem 2rem; }
+  .intro-text { font-size: 1.05rem; color: var(--gray-600); line-height: 1.85; font-weight: 300; max-width: 740px; margin-bottom: 1.5rem; }
+  .intro-text strong { color: var(--navy); font-weight: 500; }
+  .contact-note { font-size: 0.88rem; color: var(--gray-600); line-height: 1.75; font-weight: 300; padding: 1.25rem 1.5rem; background: var(--gray-100); border-left: 3px solid var(--teal-mid); border-radius: 0 6px 6px 0; max-width: 700px; }
+  .contact-note a { color: var(--teal-mid); text-decoration: none; border-bottom: 1px solid var(--teal-light); padding-bottom: 1px; }
+  .contact-note a:hover { color: var(--teal-dark); }
+
+  /* RESEARCH AREAS */
+  .research-areas { background: var(--gray-100); border-top: 1px solid var(--gray-200); border-bottom: 1px solid var(--gray-200); }
+  .research-inner { max-width: 960px; margin: 0 auto; padding: 4rem 2rem; }
+  .section-eyebrow { font-size: 0.7rem; font-weight: 500; letter-spacing: 0.14em; color: var(--teal-mid); text-transform: uppercase; margin-bottom: 0.5rem; }
+  .section-title { font-size: clamp(1.3rem, 2.5vw, 1.8rem); font-weight: 300; color: var(--navy); margin-bottom: 3rem; }
+
+  /* RESEARCH CARD — alternating layout */
+  .research-card { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; margin-bottom: 5rem; }
+  .research-card:last-child { margin-bottom: 0; }
+  .research-card.reverse { direction: rtl; }
+  .research-card.reverse > * { direction: ltr; }
+
+  .research-image-block { position: relative; }
+  .research-image-placeholder {
+    width: 100%; aspect-ratio: 4/3; border-radius: 8px;
+    background: linear-gradient(135deg, var(--gray-200) 0%, var(--gray-100) 100%);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    gap: 0.75rem; border: 1px solid var(--gray-200);
+    color: var(--gray-400); font-size: 0.78rem; letter-spacing: 0.04em;
+    text-transform: uppercase; font-weight: 500;
+  }
+  .research-image-placeholder svg { opacity: 0.35; }
+  .research-image-tag {
+    position: absolute; bottom: -0.75rem; left: 1.5rem;
+    background: var(--navy); color: white;
+    font-size: 0.7rem; font-weight: 500; letter-spacing: 0.08em;
+    text-transform: uppercase; padding: 4px 12px; border-radius: 3px;
+  }
+
+  /* Teal variant tag */
+  .research-card:nth-child(2) .research-image-tag { background: var(--teal-dark); }
+  .research-card:nth-child(3) .research-image-tag { background: var(--magenta); }
+
+  /* Coloured placeholder tints */
+  .research-card:nth-child(1) .research-image-placeholder { background: linear-gradient(135deg, #e0eef5 0%, #f0f8ff 100%); }
+  .research-card:nth-child(2) .research-image-placeholder { background: linear-gradient(135deg, #e0f5ef 0%, #f0fff8 100%); }
+  .research-card:nth-child(3) .research-image-placeholder { background: linear-gradient(135deg, #f5e0ee 0%, #fff0f8 100%); }
+
+  .research-content {}
+  .research-number { font-size: 3rem; font-weight: 300; color: var(--gray-200); line-height: 1; margin-bottom: 0.25rem; font-style: italic; }
+  .research-title { font-size: 1.3rem; font-weight: 400; color: var(--navy); margin-bottom: 1rem; line-height: 1.3; }
+  .research-body { font-size: 0.88rem; color: var(--gray-600); line-height: 1.8; font-weight: 300; }
+  .research-body p { margin-bottom: 0.85rem; }
+  .research-body p:last-child { margin-bottom: 0; }
+  .research-body ul { padding-left: 1.25rem; margin: 0.5rem 0 0.85rem; }
+  .research-body ul li { margin-bottom: 0.35rem; }
+  .research-tag-row { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 1.25rem; }
+  .rtag { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 0.7rem; font-weight: 500; letter-spacing: 0.04em; text-transform: uppercase; }
+  .rtag-navy { background: #e8ecf2; color: var(--navy); }
+  .rtag-teal { background: var(--teal-pale); color: var(--teal-dark); }
+  .rtag-magenta { background: #fdeef4; color: var(--magenta); }
+
+  /* DIVIDER */
+  .section-divider { border: none; border-top: 1px solid var(--gray-200); margin: 3rem 0; }
+
+  /* FOOTER */
+  footer { background: var(--gray-100); border-top: 1px solid var(--gray-200); padding: 1.5rem 2rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; }
+  footer p { font-size: 0.75rem; color: var(--gray-400); font-weight: 300; margin-bottom: 0.2rem; }
+  footer p a { color: var(--teal-mid); text-decoration: none; font-size: 0.75rem; }
+  footer a { color: var(--teal-mid); text-decoration: none; font-size: 0.75rem; }
+
+  @media (max-width: 700px) {
+    .research-card { grid-template-columns: 1fr; gap: 2rem; }
+    .research-card.reverse { direction: ltr; }
+    nav { padding: 0 1rem; }
+    .nav-links { gap: 1rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Priebbenow<span>Group</span></div>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="priebbenow-publications.html">Publications</a></li>
+    <li><a href="group-members.html">Group Members</a></li>
+    <li><a href="research.html" class="active">Research</a></li>
+    <li><a href="#">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- PAGE HEADER -->
+<header class="page-header">
+  <div class="page-header-inner">
+    <h1>Research</h1>
+  </div>
+</header>
+
+<!-- INTRO -->
+<section class="intro-section">
+  <h2 style="font-size: clamp(1.3rem, 2.5vw, 1.8rem); font-weight: 600; color: var(--navy); margin-bottom: 1.25rem;">Discovering New Strategies to Synthesise Bioactive Molecules</h2>
+  <p class="intro-text">
+    Our research focuses on the <strong>discovery of new synthetic methods</strong> and their application in medicinal chemistry and chemical biology. To achieve this, we investigate transition-metal catalysis and visible light irradiation to discover new modes of chemical reactivity that can be employed in applications such as the synthesis of new therapeutic agents, the late-stage functionalisation of pharmaceuticals, and the development of new tools for chemical biology.
+  </p>
+  <div class="contact-note">
+    <strong>Postgraduate students</strong> wishing to undertake a research project under the supervision of Dr Daniel Priebbenow should send a CV and academic transcript to <a href="mailto:daniel.priebbenow@monash.edu">Dan</a>. Prospective <strong>industry partners or collaborators</strong> should also contact <a href="mailto:daniel.priebbenow@monash.edu">Dan</a> for information on funding opportunities and projects.
+  </div>
+</section>
+
+<!-- RESEARCH AREAS -->
+<section class="research-areas">
+  <div class="research-inner">
+    <p class="section-eyebrow">Research Areas</p>
+
+    <!-- CARD 1: Transition-Metal Catalysis -->
+    <div class="research-card">
+      <div class="research-image-block">
+        <div class="research-image-placeholder">
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="24" cy="24" r="8" stroke="#1e2d4a" stroke-width="2"/>
+            <circle cx="10" cy="14" r="4" stroke="#1e2d4a" stroke-width="1.5"/>
+            <circle cx="38" cy="14" r="4" stroke="#1e2d4a" stroke-width="1.5"/>
+            <circle cx="10" cy="34" r="4" stroke="#1e2d4a" stroke-width="1.5"/>
+            <circle cx="38" cy="34" r="4" stroke="#1e2d4a" stroke-width="1.5"/>
+            <line x1="14" y1="16" x2="20" y2="20" stroke="#1e2d4a" stroke-width="1.5"/>
+            <line x1="34" y1="16" x2="28" y2="20" stroke="#1e2d4a" stroke-width="1.5"/>
+            <line x1="14" y1="32" x2="20" y2="28" stroke="#1e2d4a" stroke-width="1.5"/>
+            <line x1="34" y1="32" x2="28" y2="28" stroke="#1e2d4a" stroke-width="1.5"/>
+          </svg>
+          Image placeholder
+        </div>
+        <div class="research-image-tag">Transition-Metal Catalysis</div>
+      </div>
+      <div class="research-content">
+        <h3 class="research-title">Transition-Metal Catalysis</h3>
+        <div class="research-body">
+          <p>We are exploring the development of novel catalysts and catalytic systems that enable us to activate and functionalise typically inert C–H bonds. To achieve this, we use a combination of catalyst screening, computational analysis and data science approaches to guide the design of new catalysts that deliver enhanced activity and selectivity.</p>
+          <p>We have discovered a series of new olefination, allylation, alkynylation, amidation and hydroarylation reactions using a variety of rhodium, ruthenium, iridium and cobalt-based catalytic systems.</p>
+          <p>Applications of the new catalytic processes we have discovered include the late-stage functionalisation of pharmaceuticals, synthesis of drug conjugates and post-polymerisation modification.</p>
+        </div>
+      </div>
+    </div>
+
+    <hr class="section-divider">
+
+    <!-- CARD 2: Photochemistry -->
+    <div class="research-card reverse">
+      <div class="research-image-block">
+        <div class="research-image-placeholder">
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="24" cy="24" r="9" stroke="#1a6b5a" stroke-width="2"/>
+            <line x1="24" y1="4" x2="24" y2="10" stroke="#1a6b5a" stroke-width="2" stroke-linecap="round"/>
+            <line x1="24" y1="38" x2="24" y2="44" stroke="#1a6b5a" stroke-width="2" stroke-linecap="round"/>
+            <line x1="4" y1="24" x2="10" y2="24" stroke="#1a6b5a" stroke-width="2" stroke-linecap="round"/>
+            <line x1="38" y1="24" x2="44" y2="24" stroke="#1a6b5a" stroke-width="2" stroke-linecap="round"/>
+            <line x1="8.7" y1="8.7" x2="13" y2="13" stroke="#1a6b5a" stroke-width="2" stroke-linecap="round"/>
+            <line x1="35" y1="35" x2="39.3" y2="39.3" stroke="#1a6b5a" stroke-width="2" stroke-linecap="round"/>
+            <line x1="39.3" y1="8.7" x2="35" y2="13" stroke="#1a6b5a" stroke-width="2" stroke-linecap="round"/>
+            <line x1="13" y1="35" x2="8.7" y2="39.3" stroke="#1a6b5a" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+          Image placeholder
+        </div>
+        <div class="research-image-tag">Photochemistry</div>
+      </div>
+      <div class="research-content">
+        <h3 class="research-title">Photochemistry</h3>
+        <div class="research-body">
+          <p>Synthetic photochemistry uses light irradiation to excite molecules. Photochemical excitation can provide access to novel activation modes, reactive intermediates and mechanistic pathways. Our focus in this area is the use of light to drive chemical reactions using two different approaches:</p>
+          <ul>
+            <li>Photons absorbed by photosensitisers that activate reactants through energy transfer or electron transfer</li>
+            <li>Photons absorbed by the reactants, where specific functional groups can be directly excited to generate reactive intermediates</li>
+          </ul>
+          <p>As a result of our investigations, we have discovered a series of new photochemical reactions involving light-induced siloxycarbene intermediates generated via the direct irradiation or photosensitised activation of acylsilanes. We are also exploring new photoactivatable tools for chemical biology.</p>
+        </div>
+      </div>
+    </div>
+
+    <hr class="section-divider">
+
+    <!-- CARD 3: Medicinal Chemistry -->
+    <div class="research-card">
+      <div class="research-image-block">
+        <div class="research-image-placeholder">
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="6" y="18" width="36" height="24" rx="4" stroke="#c0296b" stroke-width="2"/>
+            <path d="M16 18V12a8 8 0 0116 0v6" stroke="#c0296b" stroke-width="2" stroke-linecap="round"/>
+            <line x1="24" y1="26" x2="24" y2="34" stroke="#c0296b" stroke-width="2" stroke-linecap="round"/>
+            <line x1="20" y1="30" x2="28" y2="30" stroke="#c0296b" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+          Image placeholder
+        </div>
+        <div class="research-image-tag">Medicinal Chemistry</div>
+      </div>
+      <div class="research-content">
+        <h3 class="research-title">Medicinal Chemistry</h3>
+        <div class="research-body">
+          <p>Germs such as bacteria develop the ability to overcome the medicines designed to kill them, which limits our ability to successfully treat bacterial infections and leads to millions of additional deaths worldwide each year. Tuberculosis — caused by a bacterial infection — is currently responsible for more deaths annually than any other infectious disease, representing a significant global public health threat.</p>
+          <p>Of growing concern is the rapid emergence of drug-resistant tuberculosis strains that do not respond to traditional antibiotic medicines. To address this critical need, we are exploring the development of novel therapeutic candidates that are highly potent against drug-resistant strains of the tuberculosis bacteria yet produce fewer side effects than existing treatments.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <p>© 2026 Priebbenow Group — <a href="https://www.monash.edu/mips/themes/medicinal-chemistry" target="_blank">Monash Institute of Pharmaceutical Sciences</a></p>
+    <p>399 Royal Parade, Parkville VIC 3052, Australia</p>
+  </div>
+  <a href="priebbenow-publications.html">Publications ↗</a>
+</footer>
+
+</body>
+</html>
