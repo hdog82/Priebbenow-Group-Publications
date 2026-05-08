@@ -24,6 +24,19 @@
   "publications": [
     {
       "year": 2026,
+      "title": "Discovery of APO-50815, a potent WEE1 kinase inhibitor with exceptional efficacy against patient-derived colorectal cancer organoids",
+      "authors": "Syphers, J. L.; Wright, J. A.; de Nys, R.; Silva, T. N.; Vrbanac, L.; Barratt, K. R.; Leeflang, J.; Hasan, S. T.; Thomson, S. F.; Kumar, A.; Krämer, A.; Lenz, C.; Gee, Y. S.; Chang, A.; Young, S.; Sloan, E. K.; Knapp, S.; Worthley, D. L.; Mukherjee, S.; Stockton, K.; Priebbenow, D. L.; Woods, S. L.; Baell, J. B.",
+      "journal": "European Journal of Medicinal Chemistry",
+      "volume": "312 pp. 118838",
+      "date": "5 Aug 2026",
+      "doi": "https://doi.org/10.1016/j.ejmech.2026.118838",
+      "tags": [
+        "medchem"
+      ],
+      "badges": []
+    },
+    {
+      "year": 2026,
       "title": "Ligand-Enabled CpERhIII-Catalyzed C(sp3)–H Alkynylation of Carboxamides",
       "authors": "Tong, Y., Ross, H. J., Day, A. J. & Priebbenow, D. L.",
       "journal": "ACS Catalysis",
