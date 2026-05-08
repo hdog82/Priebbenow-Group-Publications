@@ -49,10 +49,6 @@
   .year-num { font-size: 1.3rem; font-weight: 300; color: var(--navy); font-style: italic; min-width: 48px; }
   .year-count { font-size: 0.72rem; color: var(--gray-400); letter-spacing: 0.06em; text-transform: uppercase; }
   .pub-card { display: flex; gap: 1.25rem; padding: 1.25rem 1.5rem; background: var(--gray-100); border: 1px solid var(--gray-200); border-radius: 6px; margin-bottom: 0.6rem; }
-  .pub-card:hover { background: #000000; border-color: #000000; cursor: pointer; }
-  .pub-card:hover .pub-title, .pub-card:hover .pub-title a, .pub-card:hover .pub-authors, .pub-card:hover .pub-journal, .pub-card:hover .pub-vol, .pub-card:hover .pub-num, .pub-card:hover .pub-journal-sep { color: #ffffff; }
- .pub-card:hover .pub-title a { border-bottom-color: rgba(255,255,255,0.3); color: var(--teal-light) !important; }
-  .pub-card:hover .badge { opacity: 0.85; }
   .pub-card:last-child { margin-bottom: 0; }
   .pub-num { font-size: 0.78rem; font-weight: 500; color: var(--gray-400); min-width: 28px; padding-top: 2px; font-style: italic; text-align: right; }
   .pub-body { flex: 1; }
@@ -76,8 +72,8 @@
   .footnote { font-size: 0.75rem; color: var(--gray-400); font-weight: 300; font-style: italic; margin-top: 1rem; }
   .footnote a { color: var(--teal-mid); text-decoration: none; }
   footer { background: var(--gray-100); border-top: 1px solid var(--gray-200); padding: 1.5rem 2rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; }
-  footer p { font-size: 0.75rem; color: var(--gray-400); font-weight: 300; margin-bottom: 0.2rem; }
-  footer p a { color: var(--teal-mid); text-decoration: none; font-size: 0.75rem; }
+  footer p { font-size: 0.75rem; color: var(--gray-400); font-weight: 300; }
+  footer a { color: var(--teal-mid); text-decoration: none; font-size: 0.75rem; }
   @media (max-width: 600px) { .header-stats { gap: 1.25rem; } .pub-num { display: none; } nav { padding: 0 1rem; } .nav-links { gap: 1rem; } }
 </style>
 </head>
@@ -87,9 +83,9 @@
   <div class="nav-logo">Priebbenow<span>Group</span></div>
   <ul class="nav-links">
     <li><a href="index.html">Home</a></li>
+    <li><a href="research.html">Research</a></li>
     <li><a href="priebbenow-publications.html" class="active">Publications</a></li>
     <li><a href="group-members.html">Group Members</a></li>
-    <li><a href="research.html">Research</a></li>
     <li><a href="#">Contact</a></li>
   </ul>
 </nav>
@@ -121,10 +117,7 @@
 </main>
 
 <footer>
-  <div>
-    <p>© 2026 Priebbenow Group — <a href="https://www.monash.edu/mips/themes/medicinal-chemistry" target="_blank">Monash Institute of Pharmaceutical Sciences</a></p>
-    <p>399 Royal Parade, Parkville VIC 3052, Australia</p>
-  </div>
+  <p>© 2026 Priebbenow Group — Monash Institute of Pharmaceutical Sciences</p>
   <a href="https://scholar.google.com/citations?user=mblc2c0AAAAJ" target="_blank">Google Scholar profile ↗</a>
 </footer>
 
@@ -174,7 +167,7 @@
     });
   }
 
-function filterPubs(tag, btn) {
+  function filterPubs(tag, btn) {
     document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
     document.querySelectorAll('.pub-card').forEach(card => {
@@ -182,11 +175,8 @@ function filterPubs(tag, btn) {
       card.style.display = (tag === 'all' || tags.includes(tag)) ? 'flex' : 'none';
     });
     document.querySelectorAll('.year-group').forEach(group => {
-      const visibleCards = [...group.querySelectorAll('.pub-card')].filter(c => c.style.display !== 'none');
-      group.style.display = visibleCards.length > 0 ? '' : 'none';
-      const count = visibleCards.length;
-      const countEl = group.querySelector('.year-count');
-      if (countEl) countEl.textContent = count + ' publication' + (count !== 1 ? 's' : '');
+      const visible = [...group.querySelectorAll('.pub-card')].some(c => c.style.display !== 'none');
+      group.style.display = visible ? '' : 'none';
     });
   }
 
