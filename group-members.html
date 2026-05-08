@@ -102,9 +102,9 @@
   /* CAROUSEL */
   .carousel-section { margin: 3rem 0; }
   .carousel-heading { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.1em; color: var(--gray-400); text-transform: uppercase; margin-bottom: 1.25rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--gray-200); }
-  .carousel-wrap { position: relative; overflow: hidden; border-radius: 8px; background: var(--gray-100); max-height: 550px; }
+  .carousel-wrap { position: relative; overflow: hidden; border-radius: 8px; background: var(--gray-100); aspect-ratio: 16/7; }
   .carousel-track { display: flex; transition: transform 0.45s cubic-bezier(0.4,0,0.2,1); height: 100%; }
-  .carousel-slide { min-width: 100%; max-height: 550px; object-fit: contain; display: block; flex-shrink: 0; background: var(--gray-100); }
+  .carousel-slide { min-width: 100%; height: 100%; object-fit: cover; flex-shrink: 0; }
   .carousel-slide-placeholder { min-width: 100%; height: 100%; flex-shrink: 0; display: flex; align-items: center; justify-content: center; background: var(--gray-200); color: var(--gray-400); font-size: 0.85rem; font-style: italic; }
   .carousel-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(30,45,74,0.7); color: white; border: none; width: 40px; height: 40px; border-radius: 50%; cursor: pointer; font-size: 1.1rem; display: flex; align-items: center; justify-content: center; transition: background 0.2s; z-index: 10; }
   .carousel-btn:hover { background: rgba(30,45,74,0.95); }
@@ -117,12 +117,22 @@
   .alumni-section {
     background: var(--gray-100); border: 1px solid var(--gray-200);
     border-radius: 8px; padding: 2rem 2.5rem; margin-top: 1rem;
+    max-width: calc(100% - 2rem); margin-left: auto; margin-right: auto;
   }
   .alumni-heading {
     font-size: 0.72rem; font-weight: 500; letter-spacing: 0.1em;
     color: var(--gray-400); text-transform: uppercase;
-    margin-bottom: 1.5rem; padding-bottom: 0.5rem;
+    margin-bottom: 1rem; padding-bottom: 0.5rem;
     border-bottom: 1px solid var(--gray-200);
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .alumni-toggle-btn {
+    font-family: var(--font); font-size: 0.72rem; font-weight: 500;
+    background: var(--navy); color: white; border: none; border-radius: 20px;
+    padding: 4px 12px; cursor: pointer; letter-spacing: 0.03em;
+    transition: background 0.2s; white-space: nowrap;
+  }
+  .alumni-toggle-btn:hover { background: var(--teal-dark); }
   }
   .alumni-grid {
     display: grid;
@@ -131,6 +141,7 @@
   }
   .alumni-col-title { font-size: 0.78rem; font-weight: 500; color: var(--navy); margin-bottom: 0.4rem; }
   .alumni-name { font-size: 0.78rem; color: var(--gray-600); font-weight: 300; line-height: 1.6; }
+  .alumni-workplace { color: var(--teal-mid); font-style: italic; font-size: 0.75rem; }
 
   .section-divider { border: none; border-top: 1px solid var(--gray-200); margin: 3rem 0; }
 
@@ -272,20 +283,40 @@
     }).join('');
   }
 
-  function buildAlumni(alumni) {
+  function buildAlumni(alumni, workplaces) {
+    const hasWorkplaces = workplaces && Object.values(workplaces).some(arr => arr && arr.length > 0);
     const cols = Object.entries(alumni)
       .filter(([, names]) => names.length > 0)
-      .map(([title, names]) => `
-        <div>
-          <div class="alumni-col-title">${title}</div>
-          ${names.map(n => `<div class="alumni-name">${n}</div>`).join('')}
-        </div>`).join('');
+      .map(([title, names]) => {
+        const wp = (workplaces && workplaces[title]) || [];
+        const rows = names.map((n, i) => {
+          const place = wp[i] || '';
+          return `<div class="alumni-name">
+            <span class="alumni-name-text">${n}</span>
+            ${place ? `<span class="alumni-workplace" style="display:none"> → ${place}</span>` : ''}
+          </div>`;
+        }).join('');
+        return `<div><div class="alumni-col-title">${title}</div>${rows}</div>`;
+      }).join('');
     return `
       <hr class="section-divider">
       <div class="alumni-section">
-        <div class="alumni-heading">Alumni</div>
+        <div class="alumni-heading">
+          <span>Alumni</span>
+          ${hasWorkplaces ? `<button class="alumni-toggle-btn" id="alumni-toggle-btn" onclick="toggleWorkplaces()">Where we went next</button>` : ''}
+        </div>
         <div class="alumni-grid">${cols}</div>
       </div>`;
+  }
+
+  let workplacesVisible = false;
+  function toggleWorkplaces() {
+    workplacesVisible = !workplacesVisible;
+    document.querySelectorAll('.alumni-workplace').forEach(el => {
+      el.style.display = workplacesVisible ? 'inline' : 'none';
+    });
+    const btn = document.getElementById('alumni-toggle-btn');
+    if (btn) btn.textContent = workplacesVisible ? 'Hide workplaces' : 'Where we went next';
   }
 
   fetch('members.json')
@@ -294,7 +325,7 @@
       const html =
         buildLabHead(data.labHead) +
         buildMembers(data.roles, data.members, data.carousel) +
-        buildAlumni(data.alumni);
+        buildAlumni(data.alumni, data.workplaces);
       document.getElementById('page-content').innerHTML = html;
       if (data.carousel && data.carousel.length) initCarousel(data.carousel.length);
     })
