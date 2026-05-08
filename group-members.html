@@ -37,12 +37,12 @@
 
   /* LAB HEAD */
   .labhead-card {
-    display: flex; gap: 2.5rem; align-items: center;
+    display: flex; gap: 2.5rem; align-items: flex-start;
     background: var(--navy); border-radius: 8px;
     padding: 2.5rem; margin-bottom: 4rem; color: white;
   }
   .labhead-photo {
-    width: 240px; height: 300px; border-radius: 8px; flex-shrink: 0;
+    width: 180px; height: 180px; border-radius: 8px; flex-shrink: 0;
     background: rgba(255,255,255,0.1); border: 2px solid rgba(255,255,255,0.2);
     display: flex; align-items: center; justify-content: center;
     font-size: 2.5rem; color: rgba(255,255,255,0.3); overflow: hidden;
@@ -99,7 +99,21 @@
   .member-postnominals { font-size: 0.75rem; color: var(--teal-mid); font-style: italic; margin-top: 2px; }
   .member-bio-text { font-size: 0.72rem; color: var(--gray-600); margin-top: 4px; line-height: 1.4; font-weight: 300; }
 
-  /* ALUMNI */
+  /* CAROUSEL */
+  .carousel-section { margin: 3rem 0; }
+  .carousel-heading { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.1em; color: var(--gray-400); text-transform: uppercase; margin-bottom: 1.25rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--gray-200); }
+  .carousel-wrap { position: relative; overflow: hidden; border-radius: 8px; background: var(--gray-100); aspect-ratio: 16/7; }
+  .carousel-track { display: flex; transition: transform 0.45s cubic-bezier(0.4,0,0.2,1); height: 100%; }
+  .carousel-slide { min-width: 100%; height: 100%; object-fit: cover; flex-shrink: 0; }
+  .carousel-slide-placeholder { min-width: 100%; height: 100%; flex-shrink: 0; display: flex; align-items: center; justify-content: center; background: var(--gray-200); color: var(--gray-400); font-size: 0.85rem; font-style: italic; }
+  .carousel-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(30,45,74,0.7); color: white; border: none; width: 40px; height: 40px; border-radius: 50%; cursor: pointer; font-size: 1.1rem; display: flex; align-items: center; justify-content: center; transition: background 0.2s; z-index: 10; }
+  .carousel-btn:hover { background: rgba(30,45,74,0.95); }
+  .carousel-btn.prev { left: 0.75rem; }
+  .carousel-btn.next { right: 0.75rem; }
+  .carousel-dots { display: flex; justify-content: center; gap: 0.4rem; margin-top: 0.75rem; }
+  .carousel-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--gray-200); border: none; cursor: pointer; padding: 0; transition: background 0.2s; }
+  .carousel-dot.active { background: var(--navy); }
+  .carousel-caption { font-size: 0.75rem; color: var(--gray-600); text-align: center; margin-top: 0.4rem; font-style: italic; min-height: 1.2em; }
   .alumni-section {
     background: var(--gray-100); border: 1px solid var(--gray-200);
     border-radius: 8px; padding: 2rem 2.5rem; margin-top: 1rem;
@@ -187,13 +201,58 @@
           ${lh.email ? `<div class="labhead-contact"><span>Contact: </span><a href="mailto:${lh.email}">${lh.email}</a></div>` : ''}
           <div class="labhead-buttons">
             ${lh.linkedin ? `<a class="labhead-btn" href="${lh.linkedin}" target="_blank">🔗 LinkedIn</a>` : ''}
-            ${lh.orcid ? `<a class="labhead-btn" href="${lh.orcid}" target="_blank">🔗 ORCID</a>` : ''}
+            ${lh.orcid ? `<a class="labhead-btn" href="${lh.orcid}" target="_blank">⬡ ORCID</a>` : ''}
           </div>
         </div>
       </div>`;
   }
 
-  function buildMembers(roles, members) {
+  function buildCarousel(images) {
+    if (!images || !images.length) return '';
+    const slides = images.map((img, i) =>
+      img.src
+        ? `<img class="carousel-slide" src="${img.src}" alt="${img.caption || ''}" data-caption="${img.caption || ''}">`
+        : `<div class="carousel-slide-placeholder">Image placeholder</div>`
+    ).join('');
+    const dots = images.map((_, i) =>
+      `<button class="carousel-dot${i===0?' active':''}" onclick="goToSlide(${i})"></button>`
+    ).join('');
+    return `
+      <div class="carousel-section">
+        <div class="carousel-heading">Group Photos</div>
+        <div class="carousel-wrap" id="carousel-wrap">
+          <div class="carousel-track" id="carousel-track">${slides}</div>
+          ${images.length > 1 ? `
+            <button class="carousel-btn prev" onclick="prevSlide()">&#8249;</button>
+            <button class="carousel-btn next" onclick="nextSlide()">&#8250;</button>` : ''}
+        </div>
+        ${images.length > 1 ? `<div class="carousel-dots" id="carousel-dots">${dots}</div>` : ''}
+        <div class="carousel-caption" id="carousel-caption">${images[0]?.caption || ''}</div>
+      </div>`;
+  }
+
+  let carouselIndex = 0;
+  let carouselTotal = 0;
+
+  function initCarousel(total) {
+    carouselTotal = total;
+    carouselIndex = 0;
+  }
+
+  function goToSlide(n) {
+    carouselIndex = n;
+    document.getElementById('carousel-track').style.transform = `translateX(-${n * 100}%)`;
+    document.querySelectorAll('.carousel-dot').forEach((d, i) => d.classList.toggle('active', i === n));
+    const slides = document.querySelectorAll('.carousel-slide');
+    const caption = slides[n] ? (slides[n].dataset.caption || '') : '';
+    document.getElementById('carousel-caption').textContent = caption;
+  }
+
+  function nextSlide() { goToSlide((carouselIndex + 1) % carouselTotal); }
+  function prevSlide() { goToSlide((carouselIndex - 1 + carouselTotal) % carouselTotal); }
+
+  function buildMembers(roles, members, carousel) {
+    const CAROUSEL_AFTER = 'Honours Students';
     return roles.map(role => {
       const group = members.filter(m => m.role === role);
       if (!group.length) return '';
@@ -204,11 +263,12 @@
           ${m.postnominals ? `<div class="member-postnominals">${m.postnominals}</div>` : ''}
           ${m.bio ? `<div class="member-bio-text">${m.bio.replace(/\n/g, '<br>')}</div>` : ''}
         </div>`).join('');
+      const carouselHtml = role === CAROUSEL_AFTER ? buildCarousel(carousel || []) : '';
       return `
         <div class="role-section">
           <div class="role-heading">${role}</div>
           <div class="members-grid">${cards}</div>
-        </div>`;
+        </div>${carouselHtml}`;
     }).join('');
   }
 
@@ -233,9 +293,10 @@
     .then(data => {
       const html =
         buildLabHead(data.labHead) +
-        buildMembers(data.roles, data.members) +
+        buildMembers(data.roles, data.members, data.carousel) +
         buildAlumni(data.alumni);
       document.getElementById('page-content').innerHTML = html;
+      if (data.carousel && data.carousel.length) initCarousel(data.carousel.length);
     })
     .catch(err => {
       document.getElementById('page-content').innerHTML =
