@@ -48,7 +48,10 @@
   .year-heading { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.25rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--gray-200); }
   .year-num { font-size: 1.3rem; font-weight: 300; color: var(--navy); font-style: italic; min-width: 48px; }
   .year-count { font-size: 0.72rem; color: var(--gray-400); letter-spacing: 0.06em; text-transform: uppercase; }
-  .pub-card { display: flex; gap: 1.25rem; padding: 1.25rem 1.5rem; background: var(--gray-100); border: 1px solid var(--gray-200); border-radius: 6px; margin-bottom: 0.6rem; }
+  .pub-card { display: flex; gap: 1.25rem; padding: 1.25rem 1.5rem; background: var(--gray-100); border: 1px solid var(--gray-200); border-radius: 6px; margin-bottom: 0.6rem; transition: background 0.25s, border-color 0.25s; }
+  .pub-card:hover { background: #000000; border-color: #000000; cursor: pointer; }
+  .pub-card:hover .pub-title, .pub-card:hover .pub-title a, .pub-card:hover .pub-authors, .pub-card:hover .pub-journal, .pub-card:hover .pub-vol, .pub-card:hover .pub-num, .pub-card:hover .pub-journal-sep { color: #ffffff; transition: color 0.25s; }
+  .pub-card:hover .pub-title a { color: var(--teal-light) !important; border-bottom-color: rgba(255,255,255,0.3); }
   .pub-card:last-child { margin-bottom: 0; }
   .pub-num { font-size: 0.78rem; font-weight: 500; color: var(--gray-400); min-width: 28px; padding-top: 2px; font-style: italic; text-align: right; }
   .pub-body { flex: 1; }
