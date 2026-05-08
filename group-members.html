@@ -42,19 +42,29 @@
     padding: 2.5rem; margin-bottom: 4rem; color: white;
   }
   .labhead-photo {
-    width: 130px; height: 130px; border-radius: 50%; flex-shrink: 0;
+    width: 180px; height: 180px; border-radius: 8px; flex-shrink: 0;
     background: rgba(255,255,255,0.1); border: 2px solid rgba(255,255,255,0.2);
     display: flex; align-items: center; justify-content: center;
     font-size: 2.5rem; color: rgba(255,255,255,0.3); overflow: hidden;
   }
   .labhead-photo img { width: 100%; height: 100%; object-fit: cover; }
   .labhead-info { flex: 1; }
-  .labhead-name { font-size: 1.4rem; font-weight: 400; margin-bottom: 0.15rem; }
-  .labhead-postnominals { font-size: 0.85rem; color: var(--teal-light); font-style: italic; margin-bottom: 0.3rem; }
-  .labhead-title { font-size: 0.82rem; color: rgba(255,255,255,0.6); margin-bottom: 1rem; font-weight: 300; }
-  .labhead-bio { font-size: 0.85rem; color: rgba(255,255,255,0.75); line-height: 1.75; font-weight: 300; margin-bottom: 1rem; }
-  .labhead-email { font-size: 0.8rem; color: var(--teal-light); text-decoration: none; }
-  .labhead-email:hover { color: white; }
+  .labhead-name { font-size: 1.4rem; font-weight: 400; margin-bottom: 0.4rem; }
+  .labhead-title { font-size: 0.82rem; color: var(--teal-light); margin-bottom: 1rem; font-weight: 300; }
+  .labhead-bio { font-size: 0.85rem; color: rgba(255,255,255,0.75); line-height: 1.75; font-weight: 300; margin-bottom: 1.25rem; }
+  .labhead-contact { font-size: 0.8rem; margin-bottom: 1rem; }
+  .labhead-contact span { color: white; font-weight: 400; }
+  .labhead-contact a { color: var(--teal-light); text-decoration: none; }
+  .labhead-contact a:hover { color: white; }
+  .labhead-buttons { display: flex; gap: 0.6rem; flex-wrap: wrap; }
+  .labhead-btn {
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    padding: 5px 14px; border-radius: 4px; font-size: 0.78rem; font-weight: 500;
+    text-decoration: none; border: 1px solid rgba(255,255,255,0.3);
+    color: white; transition: all 0.15s; font-family: var(--font);
+    letter-spacing: 0.02em;
+  }
+  .labhead-btn:hover { background: rgba(255,255,255,0.1); border-color: white; }
 
   /* ROLE SECTION */
   .role-section { margin-bottom: 3.5rem; }
@@ -173,7 +183,11 @@
           <div class="labhead-name">Group Leader: ${lh.name}</div>
           <div class="labhead-title">${lh.title} · ${lh.institution}</div>
           <div class="labhead-bio">${lh.bio}</div>
-          ${lh.email ? `<a class="labhead-email" href="mailto:${lh.email}">Contact: ${lh.email}</a>` : ''}
+          ${lh.email ? `<div class="labhead-contact"><span>Contact: </span><a href="mailto:${lh.email}">${lh.email}</a></div>` : ''}
+          <div class="labhead-buttons">
+            ${lh.linkedin ? `<a class="labhead-btn" href="${lh.linkedin}" target="_blank">🔗 LinkedIn</a>` : ''}
+            ${lh.orcid ? `<a class="labhead-btn" href="${lh.orcid}" target="_blank">⬡ ORCID</a>` : ''}
+          </div>
         </div>
       </div>`;
   }
