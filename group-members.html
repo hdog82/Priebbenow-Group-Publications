@@ -37,12 +37,12 @@
 
   /* LAB HEAD */
   .labhead-card {
-    display: flex; gap: 2.5rem; align-items: flex-start;
+    display: flex; gap: 2.5rem; align-items: center;
     background: var(--navy); border-radius: 8px;
     padding: 2.5rem; margin-bottom: 4rem; color: white;
   }
   .labhead-photo {
-    width: 240px; height: 240px; border-radius: 8px; flex-shrink: 0;
+    width: 240px; height: 300px; border-radius: 8px; flex-shrink: 0;
     background: rgba(255,255,255,0.1); border: 2px solid rgba(255,255,255,0.2);
     display: flex; align-items: center; justify-content: center;
     font-size: 2.5rem; color: rgba(255,255,255,0.3); overflow: hidden;
@@ -187,7 +187,7 @@
           ${lh.email ? `<div class="labhead-contact"><span>Contact: </span><a href="mailto:${lh.email}">${lh.email}</a></div>` : ''}
           <div class="labhead-buttons">
             ${lh.linkedin ? `<a class="labhead-btn" href="${lh.linkedin}" target="_blank">🔗 LinkedIn</a>` : ''}
-            ${lh.orcid ? `<a class="labhead-btn" href="${lh.orcid}" target="_blank">⬡ ORCID</a>` : ''}
+            ${lh.orcid ? `<a class="labhead-btn" href="${lh.orcid}" target="_blank">🔗 ORCID</a>` : ''}
           </div>
         </div>
       </div>`;
