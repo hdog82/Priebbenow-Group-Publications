@@ -18,12 +18,27 @@
 
   /* NAV */
   nav { position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,0.95); backdrop-filter: blur(8px); border-bottom: 1px solid var(--gray-200); padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; height: 60px; }
-  .nav-logo { font-size: 0.9rem; font-weight: 500; color: var(--navy); letter-spacing: 0.03em; text-transform: uppercase; }
+  .nav-logo { font-size: 0.9rem; font-weight: 500; color: var(--navy); letter-spacing: 0.03em; text-transform: uppercase; text-decoration: none; }
   .nav-logo span { color: var(--teal-mid); }
   .nav-links { display: flex; gap: 2rem; list-style: none; }
   .nav-links a { text-decoration: none; font-size: 0.85rem; color: var(--gray-600); transition: color 0.2s; }
   .nav-links a:hover { color: var(--teal-dark); }
   .nav-links a.active { color: var(--navy); font-weight: 500; }
+
+  /* HAMBURGER */
+  .nav-hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; }
+  .nav-hamburger span { display: block; width: 22px; height: 2px; background: var(--navy); border-radius: 2px; transition: all 0.25s; }
+  .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+  .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  /* MOBILE MENU DRAWER */
+  .nav-drawer { display: none; position: fixed; top: 60px; left: 0; right: 0; background: white; border-bottom: 1px solid var(--gray-200); z-index: 99; padding: 1rem 0; box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+  .nav-drawer.open { display: block; }
+  .nav-drawer ul { list-style: none; }
+  .nav-drawer ul li a { display: block; padding: 0.75rem 2rem; font-size: 0.9rem; color: var(--gray-600); text-decoration: none; transition: background 0.15s, color 0.15s; }
+  .nav-drawer ul li a:hover { background: var(--gray-100); color: var(--navy); }
+  .nav-drawer ul li a.active { color: var(--navy); font-weight: 500; }
 
   /* HEADER */
   .page-header { background: linear-gradient(160deg, #f0f8f5 0%, #f8f7ff 70%, #fff0f5 100%); border-bottom: 1px solid var(--gray-200); padding: 3.5rem 2rem 2.5rem; }
@@ -36,17 +51,8 @@
   .main { max-width: 960px; margin: 0 auto; padding: 3rem 2rem 5rem; }
 
   /* LAB HEAD */
-  .labhead-card {
-    display: flex; gap: 2.5rem; align-items: center;
-    background: var(--navy); border-radius: 8px;
-    padding: 2.5rem; margin-bottom: 4rem; color: white;
-  }
-.labhead-photo {
-    width: 220px; border-radius: 8px; flex-shrink: 0;
-    background: rgba(255,255,255,0.1); border: 2px solid rgba(255,255,255,0.2);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 2.5rem; color: rgba(255,255,255,0.3); overflow: hidden;
-  }
+  .labhead-card { display: flex; gap: 2.5rem; align-items: center; background: var(--navy); border-radius: 8px; padding: 2.5rem; margin-bottom: 4rem; color: white; }
+  .labhead-photo { width: 220px; border-radius: 8px; flex-shrink: 0; background: rgba(255,255,255,0.1); border: 2px solid rgba(255,255,255,0.2); display: flex; align-items: center; justify-content: center; font-size: 2.5rem; color: rgba(255,255,255,0.3); overflow: hidden; }
   .labhead-photo img { width: 220px; height: auto; display: block; border-radius: 6px; }
   .labhead-info { flex: 1; }
   .labhead-name { font-size: 1.4rem; font-weight: 400; margin-bottom: 0.4rem; }
@@ -57,42 +63,17 @@
   .labhead-contact a { color: var(--teal-light); text-decoration: none; }
   .labhead-contact a:hover { color: white; }
   .labhead-buttons { display: flex; gap: 0.6rem; flex-wrap: wrap; }
-  .labhead-btn {
-    display: inline-flex; align-items: center; gap: 0.4rem;
-    padding: 5px 14px; border-radius: 4px; font-size: 0.78rem; font-weight: 500;
-    text-decoration: none; border: 1px solid rgba(255,255,255,0.3);
-    color: white; transition: all 0.15s; font-family: var(--font);
-    letter-spacing: 0.02em;
-  }
+  .labhead-btn { display: inline-flex; align-items: center; gap: 0.4rem; padding: 5px 14px; border-radius: 4px; font-size: 0.78rem; font-weight: 500; text-decoration: none; border: 1px solid rgba(255,255,255,0.3); color: white; transition: all 0.15s; font-family: var(--font); letter-spacing: 0.02em; }
   .labhead-btn:hover { background: rgba(255,255,255,0.1); border-color: white; }
 
   /* ROLE SECTION */
   .role-section { margin-bottom: 3.5rem; }
-  .role-heading {
-    font-size: 0.72rem; font-weight: 500; letter-spacing: 0.1em;
-    color: var(--gray-400); text-transform: uppercase;
-    margin-bottom: 1.5rem; padding-bottom: 0.5rem;
-    border-bottom: 1px solid var(--gray-200);
-  }
-  .members-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 1.75rem;
-  }
+  .role-heading { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.1em; color: var(--gray-400); text-transform: uppercase; margin-bottom: 1.5rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--gray-200); }
+  .members-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1.75rem; }
 
   /* MEMBER CARD */
-  .member-card {
-    display: flex; flex-direction: column; align-items: center;
-    text-align: center; cursor: default;
-  }
-  .member-photo {
-    width: 180px; height: 180px; border-radius: 6px;
-    background: var(--gray-100); border: 1px solid var(--gray-200);
-    display: flex; align-items: center; justify-content: center;
-    overflow: hidden; margin-bottom: 0.75rem;
-    transition: border-color 0.2s;
-    font-size: 2.5rem; color: var(--gray-400);
-  }
+  .member-card { display: flex; flex-direction: column; align-items: center; text-align: center; cursor: default; }
+  .member-photo { width: 180px; height: 180px; border-radius: 6px; background: var(--gray-100); border: 1px solid var(--gray-200); display: flex; align-items: center; justify-content: center; overflow: hidden; margin-bottom: 0.75rem; transition: border-color 0.2s; font-size: 2.5rem; color: var(--gray-400); }
   .member-photo img { width: 100%; height: 100%; object-fit: cover; }
   .member-card:hover .member-photo { border-color: var(--teal-light); }
   .member-name { font-size: 1rem; font-weight: 500; color: var(--navy); line-height: 1.3; }
@@ -102,10 +83,10 @@
   /* CAROUSEL */
   .carousel-section { margin: 3rem 0; }
   .carousel-heading { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.1em; color: var(--gray-400); text-transform: uppercase; margin-bottom: 1.25rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--gray-200); }
-  .carousel-wrap { position: relative; overflow: hidden; border-radius: 8px; background: var(--gray-100); max-height: 550px; }
-  .carousel-track { display: flex; transition: transform 0.45s cubic-bezier(0.4,0,0.2,1); height: 100%; }
-  .carousel-slide { min-width: 100%; max-height: 550px; object-fit: contain; display: block; flex-shrink: 0; background: var(--gray-100); }
-  .carousel-slide-placeholder { min-width: 100%; height: 100%; flex-shrink: 0; display: flex; align-items: center; justify-content: center; background: var(--gray-200); color: var(--gray-400); font-size: 0.85rem; font-style: italic; }
+  .carousel-wrap { position: relative; overflow: hidden; border-radius: 8px; background: var(--gray-100); max-height: 600px; }
+  .carousel-track { display: flex; transition: transform 0.45s cubic-bezier(0.4,0,0.2,1); }
+  .carousel-slide { min-width: 100%; max-height: 600px; width: 100%; object-fit: contain; display: block; flex-shrink: 0; background: var(--gray-100); }
+  .carousel-slide-placeholder { min-width: 100%; height: 300px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; background: var(--gray-200); color: var(--gray-400); font-size: 0.85rem; font-style: italic; }
   .carousel-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(30,45,74,0.7); color: white; border: none; width: 40px; height: 40px; border-radius: 50%; cursor: pointer; font-size: 1.1rem; display: flex; align-items: center; justify-content: center; transition: background 0.2s; z-index: 10; }
   .carousel-btn:hover { background: rgba(30,45,74,0.95); }
   .carousel-btn.prev { left: 0.75rem; }
@@ -114,30 +95,13 @@
   .carousel-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--gray-200); border: none; cursor: pointer; padding: 0; transition: background 0.2s; }
   .carousel-dot.active { background: var(--navy); }
   .carousel-caption { font-size: 0.75rem; color: var(--gray-600); text-align: center; margin-top: 0.4rem; font-style: italic; min-height: 1.2em; }
-  .alumni-section {
-    background: var(--gray-100); border: 1px solid var(--gray-200);
-    border-radius: 8px; padding: 2rem 2.5rem; margin-top: 1rem;
-    width: 100%;
-  }
-  .alumni-heading {
-    font-size: 0.72rem; font-weight: 500; letter-spacing: 0.1em;
-    color: var(--gray-400); text-transform: uppercase;
-    margin-bottom: 1rem; padding-bottom: 0.5rem;
-    border-bottom: 1px solid var(--gray-200);
-    display: flex; align-items: center; justify-content: space-between;
-  }
-  .alumni-toggle-btn {
-    font-family: var(--font); font-size: 0.72rem; font-weight: 500;
-    background: var(--navy); color: white; border: none; border-radius: 20px;
-    padding: 4px 12px; cursor: pointer; letter-spacing: 0.03em;
-    transition: background 0.2s; white-space: nowrap;
-  }
-.alumni-toggle-btn:hover { background: var(--teal-dark); }
-  .alumni-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1.5rem 3rem;
-  }
+
+  /* ALUMNI */
+  .alumni-section { background: var(--gray-100); border: 1px solid var(--gray-200); border-radius: 8px; padding: 2rem 2.5rem; margin-top: 1rem; width: 100%; }
+  .alumni-heading { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.1em; color: var(--gray-400); text-transform: uppercase; margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--gray-200); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; }
+  .alumni-toggle-btn { font-family: var(--font); font-size: 0.72rem; font-weight: 500; background: var(--navy); color: white; border: none; border-radius: 20px; padding: 4px 12px; cursor: pointer; letter-spacing: 0.03em; transition: background 0.2s; white-space: nowrap; }
+  .alumni-toggle-btn:hover { background: var(--teal-dark); }
+  .alumni-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem 3rem; }
   .alumni-col-title { font-size: 0.78rem; font-weight: 500; color: var(--navy); margin-bottom: 0.4rem; }
   .alumni-name { font-size: 0.78rem; color: var(--gray-600); font-weight: 300; line-height: 1.6; }
   .alumni-workplace { color: var(--teal-mid); font-style: italic; font-size: 0.75rem; }
@@ -153,17 +117,39 @@
   .loading { text-align: center; padding: 3rem; color: var(--gray-400); font-style: italic; font-size: 0.9rem; }
   .error { text-align: center; padding: 3rem; color: var(--magenta); font-size: 0.9rem; line-height: 1.8; }
 
-  @media (max-width: 600px) {
-    nav { padding: 0 1rem; } .nav-links { gap: 1rem; }
-    .labhead-card { flex-direction: column; align-items: center; text-align: center; }
-    .members-grid { grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); }
+  /* MOBILE */
+  @media (max-width: 700px) {
+    nav { padding: 0 1rem; }
+    .nav-links { display: none; }
+    .nav-hamburger { display: flex; }
+
+    .page-header { padding: 2rem 1.25rem 1.5rem; }
+    .main { padding: 2rem 1.25rem 3rem; }
+
+    .labhead-card { flex-direction: column; align-items: center; text-align: center; padding: 1.75rem 1.25rem; gap: 1.5rem; margin-bottom: 2.5rem; }
+    .labhead-photo { width: 160px; }
+    .labhead-photo img { width: 160px; }
+    .labhead-name { font-size: 1.15rem; }
+    .labhead-buttons { justify-content: center; }
+    .labhead-contact { text-align: center; }
+
+    .members-grid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 1.25rem; }
+    .member-photo { width: 130px; height: 130px; font-size: 2rem; }
+    .member-name { font-size: 0.88rem; }
+
+    .alumni-grid { grid-template-columns: 1fr; gap: 1rem; }
+    .alumni-section { padding: 1.25rem; }
+
+    .carousel-btn { width: 32px; height: 32px; font-size: 0.9rem; }
+
+    footer { flex-direction: column; text-align: center; padding: 1.25rem; }
   }
 </style>
 </head>
 <body>
 
 <nav>
-  <div class="nav-logo">Priebbenow<span>Group</span></div>
+  <a class="nav-logo" href="index.html">Priebbenow<span>Group</span></a>
   <ul class="nav-links">
     <li><a href="index.html">Home</a></li>
     <li><a href="research.html">Research</a></li>
@@ -171,7 +157,20 @@
     <li><a href="group-members.html" class="active">Group Members</a></li>
     <li><a href="contact.html">Contact</a></li>
   </ul>
+  <button class="nav-hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+
+<div class="nav-drawer" id="nav-drawer">
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="research.html">Research</a></li>
+    <li><a href="priebbenow-publications.html">Publications</a></li>
+    <li><a href="group-members.html" class="active">Group Members</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</div>
 
 <header class="page-header">
   <div class="page-header-inner">
@@ -192,6 +191,13 @@
 </footer>
 
 <script>
+  function toggleMenu() {
+    const btn = document.getElementById('hamburger');
+    const drawer = document.getElementById('nav-drawer');
+    btn.classList.toggle('open');
+    drawer.classList.toggle('open');
+  }
+
   function renderPhoto(photo, large) {
     const size = large ? 130 : 120;
     if (photo && photo.startsWith('data:')) {
