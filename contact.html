@@ -44,13 +44,33 @@
   footer p { font-size: 0.75rem; color: var(--gray-400); font-weight: 300; }
   footer a { color: var(--teal-mid); text-decoration: none; font-size: 0.75rem; }
 
-  @media (max-width: 600px) { nav { padding: 0 1rem; } .nav-links { gap: 1rem; } }
+  /* HAMBURGER */
+  .nav-hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; }
+  .nav-hamburger span { display: block; width: 22px; height: 2px; background: var(--navy); border-radius: 2px; transition: all 0.25s; }
+  .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+  .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+  .nav-drawer { display: none; position: fixed; top: 60px; left: 0; right: 0; background: white; border-bottom: 1px solid var(--gray-200); z-index: 99; padding: 1rem 0; box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+  .nav-drawer.open { display: block; }
+  .nav-drawer ul { list-style: none; }
+  .nav-drawer ul li a { display: block; padding: 0.75rem 2rem; font-size: 0.9rem; color: var(--gray-600); text-decoration: none; transition: background 0.15s, color 0.15s; }
+  .nav-drawer ul li a:hover { background: var(--gray-100); color: var(--navy); }
+  .nav-drawer ul li a.active { color: var(--navy); font-weight: 500; }
+
+  @media (max-width: 700px) {
+    nav { padding: 0 1rem; }
+    .nav-links { display: none; }
+    .nav-hamburger { display: flex; }
+    .main { padding: 2rem 1.25rem 3rem; }
+    .contact-note { font-size: 0.85rem; }
+    footer { flex-direction: column; text-align: center; padding: 1.25rem; }
+  }
 </style>
 </head>
 <body>
 
 <nav>
-  <div class="nav-logo">Priebbenow<span>Group</span></div>
+  <a class="nav-logo" href="index.html" style="text-decoration:none">Priebbenow<span>Group</span></a>
   <ul class="nav-links">
     <li><a href="index.html">Home</a></li>
     <li><a href="research.html">Research</a></li>
@@ -58,7 +78,20 @@
     <li><a href="group-members.html">Group Members</a></li>
     <li><a href="contact.html" class="active">Contact</a></li>
   </ul>
+  <button class="nav-hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+
+<div class="nav-drawer" id="nav-drawer">
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="research.html">Research</a></li>
+    <li><a href="priebbenow-publications.html">Publications</a></li>
+    <li><a href="group-members.html">Group Members</a></li>
+    <li><a href="contact.html" class="active">Contact</a></li>
+  </ul>
+</div>
 
 <header class="page-header">
   <div class="page-header-inner">
@@ -83,5 +116,11 @@
   <a href="priebbenow-publications.html">Publications ↗</a>
 </footer>
 
+<script>
+  function toggleMenu() {
+    document.getElementById('hamburger').classList.toggle('open');
+    document.getElementById('nav-drawer').classList.toggle('open');
+  }
+</script>
 </body>
 </html>
