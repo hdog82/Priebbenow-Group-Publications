@@ -48,10 +48,7 @@
   .year-heading { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.25rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--gray-200); }
   .year-num { font-size: 1.3rem; font-weight: 300; color: var(--navy); font-style: italic; min-width: 48px; }
   .year-count { font-size: 0.72rem; color: var(--gray-400); letter-spacing: 0.06em; text-transform: uppercase; }
-  .pub-card { display: flex; gap: 1.25rem; padding: 1.25rem 1.5rem; background: var(--gray-100); border: 1px solid var(--gray-200); border-radius: 6px; margin-bottom: 0.6rem; transition: background 0.25s, border-color 0.25s; }
-  .pub-card:hover { background: #000000; border-color: #000000; cursor: pointer; }
-  .pub-card:hover .pub-title, .pub-card:hover .pub-title a, .pub-card:hover .pub-authors, .pub-card:hover .pub-journal, .pub-card:hover .pub-vol, .pub-card:hover .pub-num, .pub-card:hover .pub-journal-sep { color: #ffffff; transition: color 0.25s; }
-  .pub-card:hover .pub-title a { color: var(--teal-light) !important; border-bottom-color: rgba(255,255,255,0.3); }
+  .pub-card { display: flex; gap: 1.25rem; padding: 1.25rem 1.5rem; background: var(--gray-100); border: 1px solid var(--gray-200); border-radius: 6px; margin-bottom: 0.6rem; }
   .pub-card:last-child { margin-bottom: 0; }
   .pub-num { font-size: 0.78rem; font-weight: 500; color: var(--gray-400); min-width: 28px; padding-top: 2px; font-style: italic; text-align: right; }
   .pub-body { flex: 1; }
@@ -77,13 +74,35 @@
   footer { background: var(--gray-100); border-top: 1px solid var(--gray-200); padding: 1.5rem 2rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; }
   footer p { font-size: 0.75rem; color: var(--gray-400); font-weight: 300; }
   footer a { color: var(--teal-mid); text-decoration: none; font-size: 0.75rem; }
-  @media (max-width: 600px) { .header-stats { gap: 1.25rem; } .pub-num { display: none; } nav { padding: 0 1rem; } .nav-links { gap: 1rem; } }
+  /* HAMBURGER */
+  .nav-hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; }
+  .nav-hamburger span { display: block; width: 22px; height: 2px; background: var(--navy); border-radius: 2px; transition: all 0.25s; }
+  .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+  .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+  .nav-drawer { display: none; position: fixed; top: 60px; left: 0; right: 0; background: white; border-bottom: 1px solid var(--gray-200); z-index: 99; padding: 1rem 0; box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+  .nav-drawer.open { display: block; }
+  .nav-drawer ul { list-style: none; }
+  .nav-drawer ul li a { display: block; padding: 0.75rem 2rem; font-size: 0.9rem; color: var(--gray-600); text-decoration: none; transition: background 0.15s, color 0.15s; }
+  .nav-drawer ul li a:hover { background: var(--gray-100); color: var(--navy); }
+  .nav-drawer ul li a.active { color: var(--navy); font-weight: 500; }
+  @media (max-width: 700px) {
+    nav { padding: 0 1rem; }
+    .nav-links { display: none; }
+    .nav-hamburger { display: flex; }
+    .header-stats { display: none; }
+    .pub-num { display: none; }
+    .filter-bar { overflow-x: auto; }
+    .page-header { padding: 2rem 1.25rem 1.5rem; }
+    .main { padding: 1.5rem 1.25rem 3rem; }
+    footer { flex-direction: column; text-align: center; padding: 1.25rem; }
+  }
 </style>
 </head>
 <body>
 
 <nav>
-  <div class="nav-logo">Priebbenow<span>Group</span></div>
+  <a class="nav-logo" href="index.html" style="text-decoration:none">Priebbenow<span>Group</span></a>
   <ul class="nav-links">
     <li><a href="index.html">Home</a></li>
     <li><a href="research.html">Research</a></li>
@@ -91,7 +110,20 @@
     <li><a href="group-members.html">Group Members</a></li>
     <li><a href="contact.html">Contact</a></li>
   </ul>
+  <button class="nav-hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+
+<div class="nav-drawer" id="nav-drawer">
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="research.html">Research</a></li>
+    <li><a href="priebbenow-publications.html" class="active">Publications</a></li>
+    <li><a href="group-members.html">Group Members</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</div>
 
 <header class="page-header">
   <div class="page-header-inner">
@@ -179,10 +211,8 @@
       card.style.display = (tag === 'all' || tags.includes(tag)) ? 'flex' : 'none';
     });
     document.querySelectorAll('.year-group').forEach(group => {
-      const visibleCards = [...group.querySelectorAll('.pub-card')].filter(c => c.style.display !== 'none');
-      group.style.display = visibleCards.length ? '' : 'none';
-      const countEl = group.querySelector('.year-count');
-      if (countEl) countEl.textContent = `${visibleCards.length} publication${visibleCards.length !== 1 ? 's' : ''}`;
+      const visible = [...group.querySelectorAll('.pub-card')].some(c => c.style.display !== 'none');
+      group.style.display = visible ? '' : 'none';
     });
   }
 
@@ -219,6 +249,11 @@
       btn.onclick = function() { filterPubs(cat.tag, this); };
       bar.appendChild(btn);
     });
+  }
+
+  function toggleMenu() {
+    document.getElementById('hamburger').classList.toggle('open');
+    document.getElementById('nav-drawer').classList.toggle('open');
   }
 </script>
 </body>
