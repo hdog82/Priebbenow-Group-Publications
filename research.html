@@ -67,6 +67,13 @@
     color: var(--gray-400); font-size: 0.78rem; letter-spacing: 0.04em;
     text-transform: uppercase; font-weight: 500;
   }
+  .research-image-placeholder svg { opacity: 0.35; }
+  .research-image-tag {
+    position: absolute; bottom: -0.75rem; left: 1.5rem;
+    background: var(--navy); color: white;
+    font-size: 0.7rem; font-weight: 500; letter-spacing: 0.08em;
+    text-transform: uppercase; padding: 4px 12px; border-radius: 3px;
+  }
 
   /* Teal variant tag */
   .research-card:nth-child(2) .research-image-tag { background: var(--teal-dark); }
@@ -100,11 +107,29 @@
   footer p a { color: var(--teal-mid); text-decoration: none; font-size: 0.75rem; }
   footer a { color: var(--teal-mid); text-decoration: none; font-size: 0.75rem; }
 
+  /* HAMBURGER */
+  .nav-hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; }
+  .nav-hamburger span { display: block; width: 22px; height: 2px; background: var(--navy); border-radius: 2px; transition: all 0.25s; }
+  .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+  .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+  .nav-drawer { display: none; position: fixed; top: 60px; left: 0; right: 0; background: white; border-bottom: 1px solid var(--gray-200); z-index: 99; padding: 1rem 0; box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+  .nav-drawer.open { display: block; }
+  .nav-drawer ul { list-style: none; }
+  .nav-drawer ul li a { display: block; padding: 0.75rem 2rem; font-size: 0.9rem; color: var(--gray-600); text-decoration: none; transition: background 0.15s, color 0.15s; }
+  .nav-drawer ul li a:hover { background: var(--gray-100); color: var(--navy); }
+  .nav-drawer ul li a.active { color: var(--navy); font-weight: 500; }
+
   @media (max-width: 700px) {
+    nav { padding: 0 1rem; }
+    .nav-links { display: none; }
+    .nav-hamburger { display: flex; }
     .research-card { grid-template-columns: 1fr; gap: 2rem; }
     .research-card.reverse { direction: ltr; }
-    nav { padding: 0 1rem; }
-    .nav-links { gap: 1rem; }
+    .page-header { padding: 2rem 1.25rem 1.5rem; }
+    .intro-section { padding: 2rem 1.25rem; }
+    .research-inner { padding: 2rem 1.25rem; }
+    footer { flex-direction: column; text-align: center; padding: 1.25rem; }
   }
 </style>
 </head>
@@ -112,7 +137,7 @@
 
 <!-- NAV -->
 <nav>
-  <div class="nav-logo">Priebbenow<span>Group</span></div>
+  <a class="nav-logo" href="index.html" style="text-decoration:none">Priebbenow<span>Group</span></a>
   <ul class="nav-links">
     <li><a href="index.html">Home</a></li>
     <li><a href="research.html" class="active">Research</a></li>
@@ -120,7 +145,20 @@
     <li><a href="group-members.html">Group Members</a></li>
     <li><a href="contact.html">Contact</a></li>
   </ul>
+  <button class="nav-hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+
+<div class="nav-drawer" id="nav-drawer">
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="research.html" class="active">Research</a></li>
+    <li><a href="priebbenow-publications.html">Publications</a></li>
+    <li><a href="group-members.html">Group Members</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</div>
 
 <!-- PAGE HEADER -->
 <header class="page-header">
@@ -147,9 +185,23 @@
 
     <!-- CARD 1: Transition-Metal Catalysis -->
     <div class="research-card">
-<div class="research-image-block">
-        <img src="TM Catalysts.png" alt="Transition-Metal Catalysis" style="width:100%;height:auto;border-radius:8px;display:block;object-fit:contain;">
-              </div>
+      <div class="research-image-block">
+        <div class="research-image-placeholder">
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="24" cy="24" r="8" stroke="#1e2d4a" stroke-width="2"/>
+            <circle cx="10" cy="14" r="4" stroke="#1e2d4a" stroke-width="1.5"/>
+            <circle cx="38" cy="14" r="4" stroke="#1e2d4a" stroke-width="1.5"/>
+            <circle cx="10" cy="34" r="4" stroke="#1e2d4a" stroke-width="1.5"/>
+            <circle cx="38" cy="34" r="4" stroke="#1e2d4a" stroke-width="1.5"/>
+            <line x1="14" y1="16" x2="20" y2="20" stroke="#1e2d4a" stroke-width="1.5"/>
+            <line x1="34" y1="16" x2="28" y2="20" stroke="#1e2d4a" stroke-width="1.5"/>
+            <line x1="14" y1="32" x2="20" y2="28" stroke="#1e2d4a" stroke-width="1.5"/>
+            <line x1="34" y1="32" x2="28" y2="28" stroke="#1e2d4a" stroke-width="1.5"/>
+          </svg>
+          Image placeholder
+        </div>
+        <div class="research-image-tag">Transition-Metal Catalysis</div>
+      </div>
       <div class="research-content">
         <h3 class="research-title">Transition-Metal Catalysis</h3>
         <div class="research-body">
@@ -179,7 +231,8 @@
           </svg>
           Image placeholder
         </div>
-              </div>
+        <div class="research-image-tag">Photochemistry</div>
+      </div>
       <div class="research-content">
         <h3 class="research-title">Photochemistry</h3>
         <div class="research-body">
@@ -207,7 +260,7 @@
           </svg>
           Image placeholder
         </div>
-        
+        <div class="research-image-tag">Medicinal Chemistry</div>
       </div>
       <div class="research-content">
         <h3 class="research-title">Medicinal Chemistry</h3>
@@ -230,5 +283,11 @@
   <a href="priebbenow-publications.html">Publications ↗</a>
 </footer>
 
+<script>
+  function toggleMenu() {
+    document.getElementById('hamburger').classList.toggle('open');
+    document.getElementById('nav-drawer').classList.toggle('open');
+  }
+</script>
 </body>
 </html>
