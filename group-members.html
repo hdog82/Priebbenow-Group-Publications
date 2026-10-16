@@ -199,9 +199,10 @@
     drawer.classList.toggle('open');
   }
 
+  // Accepts either an embedded base64 photo (old format) OR a filename such as
+  // "photos/jane-smith.jpg" (new format). Both work as an <img> src.
   function renderPhoto(photo, large) {
-    const size = large ? 130 : 120;
-    if (photo && photo.startsWith('data:')) {
+    if (photo) {
       return `<img src="${photo}" alt="photo">`;
     }
     return `<span style="font-size:${large?2.5:1.8}rem;color:${large?'rgba(255,255,255,0.25)':'var(--gray-400)'}">+</span>`;
