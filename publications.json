@@ -25,10 +25,9 @@
     {
       "year": 2026,
       "title": "Discovery of APO-50815, a potent WEE1 kinase inhibitor with exceptional efficacy against patient-derived colorectal cancer organoids",
-      "authors": "Syphers, J. L.; Wright, J. A.; de Nys, R.; Silva, T. N.; Vrbanac, L.; Barratt, K. R.; Leeflang, J.; Hasan, S. T.; Thomson, S. F.; Kumar, A.; Krämer, A.; Lenz, C.; Gee, Y. S.; Chang, A.; Young, S.; Sloan, E. K.; Knapp, S.; Worthley, D. L.; Mukherjee, S.; Stockton, K.; Priebbenow, D. L.; Woods, S. L.; Baell, J. B.",
+      "authors": "Syphers, J. L.; Wright, J. A.; de Nys, R.; Silva, T. N.; Vrbanac, L.; Barratt, K. R.; Leeflang, J.; Hasan, S. T.; Thomson, S. F.; Kumar, A.; Krämer, A.; Lenz, C.; Gee, Y. S.; Chang, A.; Young, S.; Sloan, E. K.; Knapp, S.; Worthley, D. L.; Mukherjee, S.; Stockton, K.; Priebbenow, D. L.; Woods, S. L. & Baell, J. B.",
       "journal": "European Journal of Medicinal Chemistry",
-      "volume": "312 pp. 118838",
-      "date": "5 Aug 2026",
+      "volume": "312, pp. 118838",
       "doi": "https://doi.org/10.1016/j.ejmech.2026.118838",
       "tags": [
         "medchem"
@@ -41,7 +40,6 @@
       "authors": "Tong, Y., Ross, H. J., Day, A. J. & Priebbenow, D. L.",
       "journal": "ACS Catalysis",
       "volume": "16, 5, pp. 4815–4826",
-      "date": "6 Mar 2026",
       "doi": "https://doi.org/10.1021/acscatal.5c08600",
       "tags": [
         "catalysis"
@@ -51,7 +49,7 @@
     {
       "year": 2026,
       "title": "Photocatalyzed Decarboxylative Dual Functional Group Transposition Using Bifunctional Radical Precursors",
-      "authors": "Pilkington, R. L., Priebbenow D. L.",
+      "authors": "Pilkington, R. L. & Priebbenow D. L.",
       "journal": "ACS Catalysis",
       "volume": "16, 11, pp. 10708-10720",
       "doi": "https://pubs.acs.org/doi/abs/10.1021/acscatal.6c02259",
@@ -63,7 +61,7 @@
     {
       "year": 2026,
       "title": "Selective Macrocyclic WEE1 Kinase Inhibitors with Strong Efficacy against Patient-Derived Colorectal Cancer Organoids",
-      "authors": "Syphers, J. L., Wright, J. A., Kumar, A., To, N., Elson, L., Krämer, A., Müller, S., Morasch, V., Chang, A., Young, S., Sloan, E. K., de Nys, R., Silva, T. N., Vrbanac, L., Barratt, K. R., Leeflang, J., Hasan, S. T., Gable, R. W., Knapp, S., Worthley, D. L., Mukherjee, S., Stockton, K., Woods, S. L., Priebbenow, D. L., Baell, J. B.",
+      "authors": "Syphers, J. L., Wright, J. A., Kumar, A., To, N., Elson, L., Krämer, A., Müller, S., Morasch, V., Chang, A., Young, S., Sloan, E. K., de Nys, R., Silva, T. N., Vrbanac, L., Barratt, K. R., Leeflang, J., Hasan, S. T., Gable, R. W., Knapp, S., Worthley, D. L., Mukherjee, S., Stockton, K., Woods, S. L., Priebbenow, D. L. & Baell, J. B.",
       "journal": "Journal of Medicinal Chemistry",
       "volume": "69, 17, pp. 20160-20187",
       "doi": "https://doi.org/10.1021/acs.jmedchem.6c00018",
@@ -77,7 +75,7 @@
     {
       "year": 2026,
       "title": "Photosensitized Synthesis of 1,2-Iminosulfides via β-Fragmentation of Bifunctional Oxime Reagents",
-      "authors": "Stubna, P., Pilkington, R. L., Leon Rojas, A. F., Priebbenow, D. L.",
+      "authors": "Stubna, P., Pilkington, R. L., Leon Rojas, A. F. & Priebbenow, D. L.",
       "journal": "ChemRxiv",
       "volume": "",
       "doi": "https://chemrxiv.org/doi/full/10.26434/chemrxiv.15005745/v1",
@@ -87,6 +85,20 @@
       "badges": [
         "Pre-print"
       ]
+    },
+    {
+      "year": 2026,
+      "title": "Silicon-Derived Carbene Reagents in Chemical Synthesis",
+      "authors": "Pilkington, R. L. & Priebbenow, D. L.",
+      "journal": "in Synthesis and Catalysis of Organosilicon Compounds (Eds.: M. Oestreich, P. Wang), Wiley-VCH, Weinheim, 2027",
+      "volume": "",
+      "doi": "#",
+      "tags": [
+        "photochem",
+        "catalysis",
+        "review"
+      ],
+      "badges": []
     },
     {
       "year": 2025,
@@ -135,10 +147,9 @@
     {
       "year": 2025,
       "title": "Discovery of WEE1 Kinase Inhibitors with Potent Activity against Patient-Derived, Metastatic Colorectal Cancer Organoids",
-      "authors": "Syphers, J. L., Wright, J. A., Liu, S., Gee, Y. S., Gao, F., Priebbenow, D. L., Mukherjee, S., Woods, S. L. & Baell, J. B.",
+      "authors": "Syphers, J. L., Wright, J. A., Liu, S., Gee, Y. S., Gao, F., Mudududddla, R., Che, D. Q., Chang, A., Sloan, E. K., Narasimhan, V., Heriot, A., Ramsay, R. G., de Nys, R., Silva, T. N., Vrbanac, L., Sammour, T., Lawrence, M. J., Tin, T., Maddern, G. J., Fenix, K., Kaur, H., Barratt, K., Kelter, G., Maier, A., Posch, M., Lu, H., Wang, X., Zhavoronkov, A., Wei, H., Huang, F., Worthley, D. L., Priebbenow, D. L., Mukherjee, S., Woods, S. L. & Baell, J. B.",
       "journal": "Journal of Medicinal Chemistry",
       "volume": "15, 9, pp. 8065–8090",
-      "date": "Apr 2025",
       "doi": "https://doi.org/10.1021/acs.jmedchem.4c02541",
       "tags": [
         "medchem"
@@ -178,7 +189,7 @@
     {
       "year": 2024,
       "title": "The Synthesis of Sulfonyl Fluoride Functionalized 2-Aminothiazoles Using a Diversity Oriented Clicking Strategy",
-      "authors": "Kop, J. W.; Hua, C.; Priebbenow, D. L.; Smedley, C. J.",
+      "authors": "Kop, J. W., Hua, C., Priebbenow, D. L. & Smedley, C. J.",
       "journal": "Organic Letters",
       "volume": "26, 51, pp. 11236–11240",
       "doi": "https://doi.org/10.1021/acs.orglett.4c04393",
@@ -214,7 +225,7 @@
     {
       "year": 2023,
       "title": "Discovery of Anti-tubercular Analogues of Bedaquiline with Modified A-, B- and C-Ring Subunits",
-      "authors": "Barbaro, L.; Nagalingam, G.; Triccas, J. A.; Tan, L.; West, N. P.; Priebbenow, D. L.; Baell, J.",
+      "authors": "Barbaro, L.; Nagalingam, G.; Triccas, J. A.; Tan, L.; West, N. P.; Priebbenow, D. L. & Baell, J. B.",
       "journal": "ChemMedChem",
       "volume": "18, 1, pp. e202200533",
       "doi": "https://doi.org/10.1002/cmdc.202200533",
