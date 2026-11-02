@@ -76,15 +76,13 @@
       "year": 2026,
       "title": "Photosensitized Synthesis of 1,2-Iminosulfides via β-Fragmentation of Bifunctional Oxime Reagents",
       "authors": "Stubna, P., Pilkington, R. L., Leon Rojas, A. F. & Priebbenow, D. L.",
-      "journal": "ChemRxiv",
+      "journal": "Under Review",
       "volume": "",
       "doi": "https://chemrxiv.org/doi/full/10.26434/chemrxiv.15005745/v1",
       "tags": [
         "photochem"
       ],
-      "badges": [
-        "Pre-print"
-      ]
+      "badges": []
     },
     {
       "year": 2026,
@@ -97,6 +95,18 @@
         "photochem",
         "catalysis",
         "review"
+      ],
+      "badges": []
+    },
+    {
+      "year": 2026,
+      "title": "Diazo DOC: A Diazomethane Sulfonyl Fluoride Surrogate for Diversity-Oriented Clicking and SuFEx-Driven Protein Labeling",
+      "authors": "Kop, J. W., Ding, S., Shang, V. G., Hua, C., Priebbenow, D. L., Hong, Y. & Smedley, C. J.",
+      "journal": "Journal of the American Chemical Society",
+      "volume": "online",
+      "doi": "https://doi.org/10.1021/jacs.6c13219",
+      "tags": [
+        "catalysis"
       ],
       "badges": []
     },
